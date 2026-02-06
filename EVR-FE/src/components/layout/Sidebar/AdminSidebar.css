@@ -1,0 +1,136 @@
+.admin-sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, rgba(6, 18, 34, 0.95), rgba(5, 13, 26, 0.98));
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 8px 0 24px rgba(0, 0, 0, 0.35);
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar--collapsed {
+  width: 88px;
+}
+
+.admin-sidebar__inner {
+  padding: 1.8rem 1.4rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.admin-sidebar__meta {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.admin-sidebar__label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.admin-sidebar__meta strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.admin-sidebar__nav {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.admin-sidebar__section-title {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 0.75rem;
+}
+
+.admin-sidebar__section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.admin-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 14px;
+  color: rgba(240, 244, 255, 0.75);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.admin-sidebar__link:hover {
+  background: rgba(0, 209, 255, 0.18);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.admin-sidebar__link.is-active {
+  background: linear-gradient(135deg, rgba(0, 209, 255, 0.32), rgba(21, 255, 179, 0.32));
+  color: #ffffff;
+  border: 1px solid rgba(0, 209, 255, 0.45);
+}
+
+.admin-sidebar__icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-sidebar__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+}
+
+.admin-sidebar--collapsed .admin-sidebar__inner {
+  padding: 1.8rem 0.8rem;
+}
+
+.admin-sidebar--collapsed .admin-sidebar__section-title,
+.admin-sidebar--collapsed .admin-sidebar__meta {
+  display: none;
+}
+
+.admin-sidebar--collapsed .admin-sidebar__link {
+  justify-content: center;
+  padding: 0.7rem;
+}
+
+.admin-sidebar__sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 992px) {
+  .admin-sidebar {
+    position: fixed;
+    inset: 72px auto 0 0;
+    z-index: 90;
+    width: 240px;
+    transform: translateX(0);
+  }
+}
+
+

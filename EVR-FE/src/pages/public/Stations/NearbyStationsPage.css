@@ -1,0 +1,253 @@
+.nearby-stations-page {
+  min-height: calc(100vh - 120px);
+  padding: 3rem 0;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.nearby-stations-page__hero {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  color: white;
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+}
+
+.nearby-stations-page__hero > div {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.nearby-stations-page__eyebrow {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.nearby-stations-page__hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.nearby-stations-page__hero p {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.nearby-stations-page__wrapper {
+  max-width: 1200px;
+}
+
+.nearby-stations-page__form-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  position: sticky;
+  top: 2rem;
+}
+
+.nearby-stations-page__form-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  color: #212529;
+}
+
+.nearby-stations-page__form-card .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.nearby-stations-page__form-card label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.nearby-stations-page__form-card .form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.nearby-stations-page__form-card .form-control:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.nearby-stations-page__form-card .form-text {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.nearby-stations-page__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.nearby-stations-page__loading p {
+  margin-top: 1rem;
+  color: #6c757d;
+}
+
+.nearby-stations-page__results-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  color: #212529;
+}
+
+.station-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+.station-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.station-card__header {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  color: white;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.station-card__header h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.station-card__badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+.station-card__body {
+  padding: 1.5rem;
+}
+
+.station-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6c757d;
+}
+
+.info-value {
+  font-size: 1rem;
+  color: #212529;
+  word-break: break-word;
+}
+
+.nearby-stations-page__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.empty-state {
+  text-align: center;
+  max-width: 400px;
+}
+
+.empty-state__icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: #212529;
+}
+
+.empty-state p {
+  color: #6c757d;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .nearby-stations-page__form-card {
+    position: static;
+    margin-bottom: 2rem;
+  }
+
+  .nearby-stations-page__hero h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nearby-stations-page {
+    padding: 2rem 0;
+  }
+
+  .nearby-stations-page__hero {
+    padding: 2rem 0;
+  }
+
+  .nearby-stations-page__hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .nearby-stations-page__form-card {
+    padding: 1.5rem;
+  }
+
+  .station-card__header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .station-card__badge {
+    margin-left: 0;
+    align-self: flex-start;
+  }
+}
+

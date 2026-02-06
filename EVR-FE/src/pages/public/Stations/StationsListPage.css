@@ -1,0 +1,326 @@
+.stations-page {
+  background-color: #f7f9fc;
+  min-height: calc(100vh - 160px);
+}
+
+.stations-hero {
+  background: linear-gradient(135deg, #0a2540 0%, #174781 100%);
+  color: #ffffff;
+  padding: 5.5rem 0;
+}
+
+.stations-hero__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 3rem;
+  align-items: center;
+}
+
+.stations-hero__eyebrow {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.14);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+}
+
+.stations-hero h1 {
+  margin: 1.4rem 0 1rem;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 700;
+}
+
+.stations-hero p {
+  max-width: 520px;
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+
+.stations-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.2rem;
+}
+
+.stations-hero__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.2rem;
+  padding: 2rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  align-self: stretch;
+}
+
+.stations-hero__metrics span {
+  display: block;
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+.stations-hero__metrics strong {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 2.3rem;
+  font-weight: 700;
+}
+
+.stations-content {
+  padding: 4.5rem 0;
+}
+
+.stations-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stations-toolbar h2 {
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  color: #0a2540;
+}
+
+.stations-toolbar p {
+  margin: 0;
+  color: #5c6f82;
+}
+
+.stations-toolbar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  background: #e9f6ff;
+  color: #0a2540;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(10, 37, 64, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stations-toolbar__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(10, 37, 64, 0.14);
+}
+
+.stations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.station-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5fc 100%);
+  border-radius: 26px;
+  padding: 2rem;
+  border: 1px solid rgba(10, 37, 64, 0.08);
+  box-shadow: 0 20px 36px rgba(14, 44, 78, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.station-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 40px rgba(14, 44, 78, 0.16);
+}
+
+.station-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.station-card__header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0a2540;
+}
+
+.station-card__metric {
+  text-align: right;
+  background: rgba(10, 37, 64, 0.05);
+  padding: 0.7rem 1rem;
+  border-radius: 14px;
+}
+
+.station-card__metric strong {
+  display: block;
+  font-size: 1.6rem;
+  color: #0a2540;
+}
+
+.station-card__metric span {
+  font-size: 0.9rem;
+  color: #4f6377;
+}
+
+.station-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.65rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.station-status--high {
+  background: rgba(0, 196, 140, 0.16);
+  color: #008f67;
+}
+
+.station-status--medium {
+  background: rgba(255, 184, 0, 0.16);
+  color: #b87900;
+}
+
+.station-status--low {
+  background: rgba(230, 81, 0, 0.16);
+  color: #c44c06;
+}
+
+.station-card__body {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.station-detail span {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5b6e82;
+  margin-bottom: 0.3rem;
+}
+
+.station-detail p {
+  margin: 0;
+  font-size: 1rem;
+  color: #0f2740;
+  line-height: 1.5;
+}
+
+.station-card__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.station-capacity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.station-capacity span {
+  color: #4a6074;
+  font-size: 0.95rem;
+}
+
+.station-capacity__bar {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(10, 37, 64, 0.12);
+  overflow: hidden;
+}
+
+.station-capacity__bar > div {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.4s ease;
+}
+
+.station-capacity__bar--high > div {
+  background: linear-gradient(90deg, #00c48c 0%, #00d6a1 100%);
+}
+
+.station-capacity__bar--medium > div {
+  background: linear-gradient(90deg, #ffd37a 0%, #ffb347 100%);
+}
+
+.station-capacity__bar--low > div {
+  background: linear-gradient(90deg, #ff8a65 0%, #ff7043 100%);
+}
+
+.station-card__action {
+  align-self: flex-start;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.stations-empty {
+  padding: 5rem 2rem;
+  text-align: center;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ffffff 0%, #eef3fb 100%);
+  border: 1px dashed rgba(10, 37, 64, 0.2);
+  color: #0a2540;
+}
+
+.stations-empty__icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.stations-loading,
+.stations-error {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 992px) {
+  .stations-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stations-toolbar__cta {
+    align-self: stretch;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .stations-hero {
+    padding: 4rem 0;
+  }
+
+  .stations-hero__wrapper {
+    gap: 2rem;
+  }
+
+  .stations-hero__metrics {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    padding: 1.6rem;
+  }
+
+  .stations-grid {
+    gap: 1.5rem;
+  }
+
+  .station-card {
+    padding: 1.6rem;
+    border-radius: 22px;
+  }
+}
+
+

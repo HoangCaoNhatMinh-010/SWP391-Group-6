@@ -1,0 +1,223 @@
+.respond-complaint-page {
+  padding: 2rem;
+}
+
+.respond-complaint-page__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.respond-complaint-page__header {
+  margin-bottom: 2rem;
+}
+
+.respond-complaint-page__header > div {
+  margin-top: 1rem;
+}
+
+.respond-complaint-page__header span {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.respond-complaint-page__header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.respond-complaint-page__content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+}
+
+.info-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+}
+
+.info-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.info-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-item label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item strong {
+  display: block;
+  color: #212529;
+  font-size: 1rem;
+}
+
+.info-item small {
+  display: block;
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.info-item p {
+  margin: 0;
+  color: #212529;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.previous-response {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #0d6efd;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge--pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-badge--resolved {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.status-badge--rejected {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.respond-complaint-page__form {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+}
+
+.respond-complaint-page__form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.respond-complaint-page__form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.respond-complaint-page__form .form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.respond-complaint-page__form .form-control:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.respond-complaint-page__form textarea.form-control {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.respond-complaint-page__form .form-text {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.alert-success {
+  background: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+@media (max-width: 992px) {
+  .respond-complaint-page__content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .respond-complaint-page {
+    padding: 1rem;
+  }
+
+  .respond-complaint-page__header h1 {
+    font-size: 1.5rem;
+  }
+
+  .respond-complaint-page__form {
+    padding: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+}
+
