@@ -1,6 +1,9 @@
 package com.group7.evr.service;
 
-import com.group7.evr.entity.*;
+import com.group7.evr.entity.Complaint;
+import com.group7.evr.entity.User;
+import com.group7.evr.entity.Vehicle;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -11,18 +14,11 @@ public interface AdminService {
 
     public Vehicle dispatchVehicle(Integer fromStationId, Integer toStationId, Integer vehicleId);
 
-    public List<User> getCustomersWithRiskFlags();
-
-    public RiskFlag flagCustomer(Integer customerId, Integer adminId, String reason, Integer riskScore);
-
     public List<Complaint> getComplaintsByStatus(String status);
 
     public List<User> getStaffByStation(Integer stationId);
 
     public Map<String, Object> getStaffPerformance(Integer staffId);
-
-    public StaffSchedule createStaffSchedule(Integer staffId, Integer stationId, LocalDateTime shiftStart,
-                                             LocalDateTime shiftEnd, String shiftType);
 
     public Map<String, Object> getRevenueReport(Integer stationId, LocalDateTime from, LocalDateTime to);
 

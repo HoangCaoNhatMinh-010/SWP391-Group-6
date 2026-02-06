@@ -39,21 +39,6 @@ public class AdminController {
         return ResponseEntity.ok(adminService.dispatchVehicle(fromStationId, toStationId, vehicleId));
     }
 
-    // Customer management
-    @GetMapping("/customers")
-    public ResponseEntity<List<User>> getCustomers() {
-        return ResponseEntity.ok(adminService.getCustomersWithRiskFlags());
-    }
-
-    @PostMapping("/customers/{id}/flag")
-    public ResponseEntity<RiskFlag> flagCustomer(
-            @PathVariable Integer id,
-            @RequestParam Integer adminId,
-            @RequestParam String reason,
-            @RequestParam Integer riskScore) {
-        return ResponseEntity.ok(adminService.flagCustomer(id, adminId, reason, riskScore));
-    }
-
     @PutMapping("/customers/{id}/status")
     public ResponseEntity<User> updateCustomerStatus(
             @PathVariable Integer id,
@@ -100,17 +85,6 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getStaffPerformance(id));
     }
 
-    @PostMapping("/staff/schedule")
-    public ResponseEntity<StaffSchedule> createStaffSchedule(
-            @RequestParam Integer staffId,
-            @RequestParam Integer stationId,
-            @RequestParam String shiftStart,
-            @RequestParam String shiftEnd,
-            @RequestParam String shiftType) {
-        LocalDateTime start = LocalDateTime.parse(shiftStart);
-        LocalDateTime end = LocalDateTime.parse(shiftEnd);
-        return ResponseEntity.ok(adminService.createStaffSchedule(staffId, stationId, start, end, shiftType));
-    }
 
     // Reports and analytics
     @GetMapping("/reports/revenue")

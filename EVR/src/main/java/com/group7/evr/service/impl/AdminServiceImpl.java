@@ -27,10 +27,6 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private RiskFlagRepository riskFlagRepository;
-    @Autowired
-    private StaffScheduleRepository staffScheduleRepository;
-    @Autowired
     private ComplaintRepository complaintRepository;
     @Autowired
     private UserService userService;
@@ -67,31 +63,6 @@ public class AdminServiceImpl implements AdminService {
         userService.logAudit(null, "Dispatched vehicle " + vehicleId + " from station " + fromStationId + " to " + toStationId);
         return updatedVehicle;
     }
-
-    @Override
-    public List<User> getCustomersWithRiskFlags() {
-        return userRepository.findAll().stream()
-                .filter(user -> "Customer".equals(user.getRole()))
-                .filter(user -> riskFlagRepository.findByUserUserId(user.getUserId()).size() > 0)
-                .toList();
-    }
-
-    @Override
-    public RiskFlag flagCustomer(Integer customerId, Integer adminId, String reason, Integer riskScore) {
-        User customer = userRepository.findById(customerId).orElseThrow();
-        User admin = userRepository.findById(adminId).orElseThrow();
-
-        RiskFlag riskFlag = new RiskFlag();
-        riskFlag.setUser(customer);
-        riskFlag.setFlaggedBy(admin);
-        riskFlag.setReason(reason);
-        riskFlag.setRiskScore(riskScore);
-
-        RiskFlag savedFlag = riskFlagRepository.save(riskFlag);
-        userService.logAudit(admin, "Flagged customer " + customerId + " with risk score " + riskScore);
-        return savedFlag;
-    }
-
     @Override
     public List<Complaint> getComplaintsByStatus(String status) {
         if (status == null || status.trim().isEmpty()) {
@@ -123,23 +94,6 @@ public class AdminServiceImpl implements AdminService {
         return performance;
     }
 
-    @Override
-    public StaffSchedule createStaffSchedule(Integer staffId, Integer stationId, LocalDateTime shiftStart,
-                                             LocalDateTime shiftEnd, String shiftType) {
-        User staff = userRepository.findById(staffId).orElseThrow();
-        Station station = stationRepository.findById(stationId).orElseThrow();
-
-        StaffSchedule schedule = new StaffSchedule();
-        schedule.setStaff(staff);
-        schedule.setStation(station);
-        schedule.setShiftStart(shiftStart);
-        schedule.setShiftEnd(shiftEnd);
-        schedule.setShiftType(shiftType);
-
-        StaffSchedule savedSchedule = staffScheduleRepository.save(schedule);
-        userService.logAudit(null, "Created schedule for staff " + staffId);
-        return savedSchedule;
-    }
 
     @Override
     public Map<String, Object> getRevenueReport(Integer stationId, LocalDateTime from, LocalDateTime to) {
