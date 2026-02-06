@@ -1,0 +1,293 @@
+.admin-form-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  color: #f2f6ff;
+  padding-bottom: 3rem;
+}
+
+.admin-form-page__hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.6rem;
+  padding: 2.6rem;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(10, 37, 64, 0.95), rgba(9, 22, 45, 0.92));
+  box-shadow: 0 24px 44px rgba(4, 10, 22, 0.45);
+}
+
+.admin-form-page__eyebrow {
+  display: inline-flex;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0.9rem;
+}
+
+.admin-form-page__hero h1 {
+  margin: 0;
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.admin-form-page__hero p {
+  margin: 1rem 0 0;
+  max-width: 560px;
+  color: rgba(240, 244, 255, 0.78);
+  line-height: 1.6;
+}
+
+.admin-form-page__hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-form-page__hero-button {
+  border-radius: 999px;
+  padding: 0.65rem 1.4rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.admin-form-page__hero-button:hover {
+  color: #00d1a0;
+  border-color: rgba(0, 209, 255, 0.4);
+  box-shadow: 0 0 0 4px rgba(0, 209, 255, 0.12);
+}
+
+.admin-form-page__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-form-page__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 2.2rem;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.88), rgba(4, 10, 22, 0.92));
+  box-shadow: 0 24px 44px rgba(4, 10, 22, 0.4);
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.admin-form__grid {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.admin-form__grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.admin-form .form-label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 0.55rem;
+}
+
+.admin-form .form-control,
+.admin-form .form-select,
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+  background: rgba(8, 20, 38, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  padding: 0.88rem 1rem;
+  color: #f4f9ff;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.admin-form .form-control:focus,
+.admin-form .form-select:focus,
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus {
+  border-color: rgba(0, 209, 255, 0.75);
+  box-shadow: 0 0 0 4px rgba(0, 209, 255, 0.18);
+  outline: none;
+}
+
+.admin-form .invalid-feedback {
+  display: block;
+  font-size: 0.78rem;
+  color: #ff8686;
+  margin-top: 0.35rem;
+}
+
+.admin-form .form-text {
+  font-size: 0.78rem;
+  color: rgba(240, 244, 255, 0.7);
+  margin-top: 0.35rem;
+}
+
+.admin-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.admin-form__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.admin-form-page .alert {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0.85rem 1.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f4f9ff;
+}
+
+.admin-form-page .alert-success {
+  background: linear-gradient(135deg, rgba(0, 196, 140, 0.22), rgba(12, 64, 54, 0.6));
+  border-color: rgba(0, 196, 140, 0.35);
+}
+
+.admin-form-page .alert-danger {
+  background: linear-gradient(135deg, rgba(255, 92, 67, 0.28), rgba(70, 24, 16, 0.6));
+  border-color: rgba(255, 92, 67, 0.35);
+}
+
+.admin-form-page .btn-close {
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+.admin-form-page .btn-close:hover {
+  opacity: 1;
+}
+
+.admin-form-page .spinner-border {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-width: 0.22rem;
+  color: #00d1a0;
+}
+
+.admin-form__section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-form__section-header h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.admin-form__section-description {
+  margin: 0 0 1.2rem 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.admin-form__location-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-form__location-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.admin-form__location-actions .btn-outline-primary {
+  border: 1px solid rgba(0, 209, 255, 0.4);
+  background: rgba(0, 209, 255, 0.1);
+  color: #00d1ff;
+}
+
+.admin-form__location-actions .btn-outline-primary:hover:not(:disabled) {
+  background: rgba(0, 209, 255, 0.2);
+  border-color: rgba(0, 209, 255, 0.6);
+}
+
+.admin-form__location-actions .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admin-form__coordinates-preview {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background: rgba(0, 209, 255, 0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 209, 255, 0.2);
+}
+
+.admin-form__coordinates-preview small {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+}
+
+.admin-form__coordinates-preview a {
+  color: #00d1ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.admin-form__coordinates-preview a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .admin-form-page__hero {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .admin-form-page__card {
+    padding: 1.8rem;
+  }
+
+  .admin-form__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-form__location-actions {
+    flex-direction: column;
+  }
+
+  .admin-form__location-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+

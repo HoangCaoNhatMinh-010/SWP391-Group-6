@@ -1,0 +1,119 @@
+.customer-analytics {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.customer-analytics__hero {
+  background: linear-gradient(135deg, rgba(10, 37, 64, 0.92), rgba(6, 18, 34, 0.92));
+  border-radius: 24px;
+  padding: 2.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 44px rgba(4, 10, 22, 0.45);
+}
+
+.customer-analytics__hero span {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.customer-analytics__hero h1 {
+  margin: 0.8rem 0;
+  font-size: clamp(2rem, 3vw, 2.4rem);
+}
+
+.customer-analytics__hero p {
+  margin: 0;
+  color: rgba(240, 244, 255, 0.75);
+  max-width: 520px;
+}
+
+.customer-analytics__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.customer-analytics__empty {
+  text-align: center;
+  border-radius: 24px;
+  padding: 2.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  display: grid;
+  gap: 0.8rem;
+}
+
+.customer-analytics__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
+}
+
+.customer-analytics__metrics article {
+  border-radius: 20px;
+  padding: 1.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  gap: 0.4rem;
+}
+
+.customer-analytics__metrics span {
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.customer-analytics__metrics strong {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.customer-analytics__panel {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 24px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 44px rgba(4, 10, 22, 0.35);
+  display: grid;
+  gap: 1rem;
+}
+
+.customer-analytics__panel header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.customer-analytics__panel header span {
+  font-size: 0.85rem;
+  color: rgba(240, 244, 255, 0.7);
+}
+
+.customer-analytics__panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.customer-analytics__panel li {
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+

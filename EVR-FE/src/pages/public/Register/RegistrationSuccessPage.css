@@ -1,0 +1,380 @@
+.registration-success-page {
+  position: relative;
+  background: radial-gradient(circle at 15% 20%, rgba(0, 209, 255, 0.18), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(21, 255, 179, 0.16), transparent 50%),
+    linear-gradient(180deg, #050d1a 0%, #0a1b33 100%);
+  min-height: calc(100vh - 120px);
+  padding: 5.5rem 0;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.registration-success-page__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 209, 255, 0.25), transparent 60%),
+    radial-gradient(circle at 25% 75%, rgba(255, 255, 255, 0.12), transparent 50%);
+  filter: blur(70px);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.registration-success-page__wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.registration-success-card {
+  position: relative;
+  background: rgba(7, 17, 34, 0.9);
+  border-radius: 28px;
+  padding: 3.5rem 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 28px 46px rgba(5, 13, 26, 0.35);
+  backdrop-filter: blur(18px);
+  color: #ffffff;
+  max-width: 700px;
+  width: 100%;
+  animation: success-fade-in 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.registration-success-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 209, 255, 0.55), rgba(21, 255, 179, 0.35));
+  -webkit-mask: linear-gradient(#000, #000) content-box content-box, linear-gradient(#000, #000);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.registration-success-card__icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  animation: success-icon-bounce 0.8s ease 0.3s forwards;
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+@keyframes success-icon-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.registration-success-card__title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  text-align: center;
+  background: linear-gradient(135deg, #00d1ff 0%, #15ffb3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.registration-success-card__subtitle {
+  font-size: 1.1rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.84);
+  margin: 0 0 2.5rem;
+  line-height: 1.6;
+}
+
+.registration-success-card__message {
+  margin-bottom: 2.5rem;
+}
+
+.email-notification {
+  background: rgba(0, 209, 255, 0.1);
+  border: 1px solid rgba(0, 209, 255, 0.3);
+  border-radius: 20px;
+  padding: 1.75rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.email-notification__icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  animation: email-pulse 2s ease-in-out infinite;
+}
+
+@keyframes email-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.email-notification__content {
+  flex: 1;
+}
+
+.email-notification__content h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #00d1ff;
+}
+
+.email-notification__content p {
+  margin: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.6;
+}
+
+.email-notification__content strong {
+  color: #15ffb3;
+  font-weight: 600;
+}
+
+.email-notification__hint {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-style: italic;
+  margin-top: 0.75rem !important;
+}
+
+.registration-success-card__steps {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.registration-success-card__steps h4 {
+  margin: 0 0 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.registration-success-card__steps ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.registration-success-card__steps li {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0, 209, 255, 0.2), rgba(21, 255, 179, 0.2));
+  border: 1px solid rgba(0, 209, 255, 0.4);
+  font-weight: 600;
+  color: #00d1ff;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.registration-success-card__steps li div {
+  flex: 1;
+  padding-top: 0.25rem;
+}
+
+.registration-success-card__steps li strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #ffffff;
+  font-size: 1.05rem;
+}
+
+.registration-success-card__steps li p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.registration-success-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.registration-success-card__actions .btn {
+  border-radius: 16px;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.registration-success-card__actions .btn-primary {
+  background: linear-gradient(135deg, #00d1ff 0%, #15ffb3 100%);
+  color: #050d1a;
+  box-shadow: 0 18px 30px rgba(0, 209, 255, 0.24);
+}
+
+.registration-success-card__actions .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 36px rgba(0, 209, 255, 0.3);
+}
+
+.registration-success-card__actions .btn-outline-secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.registration-success-card__actions .btn-outline-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.registration-success-card__help {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.registration-success-card__help p {
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.registration-success-card__help strong {
+  color: #15ffb3;
+}
+
+.registration-success-card__help ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.registration-success-card__help li {
+  padding-left: 1.5rem;
+  position: relative;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.registration-success-card__help li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #00d1ff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.registration-success-card__help a {
+  color: #00d1ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.registration-success-card__help a:hover {
+  color: #15ffb3;
+  text-decoration: underline;
+}
+
+@keyframes success-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .registration-success-page {
+    padding: 4rem 0;
+  }
+
+  .registration-success-card {
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+  }
+
+  .registration-success-card__title {
+    font-size: 1.75rem;
+  }
+
+  .email-notification {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .email-notification__icon {
+    margin: 0 auto;
+  }
+
+  .registration-success-card__actions {
+    gap: 0.875rem;
+  }
+
+  .registration-success-card__actions .btn {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .registration-success-page {
+    padding: 3rem 0;
+  }
+
+  .registration-success-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .registration-success-card__title {
+    font-size: 1.5rem;
+  }
+
+  .registration-success-card__subtitle {
+    font-size: 1rem;
+  }
+
+  .email-notification {
+    padding: 1.5rem;
+  }
+
+  .registration-success-card__steps {
+    padding: 1.5rem;
+  }
+}
+
