@@ -31,8 +31,6 @@ public class StationStaffServiceImpl implements StationStaffService {
     @Autowired
     private PaymentRepository paymentRepository;
     @Autowired
-    private DepositRepository depositRepository;
-    @Autowired
     private ComplaintRepository complaintRepository;
     @Autowired
     private AuditLogRepository auditLogRepository;
@@ -161,44 +159,7 @@ public class StationStaffServiceImpl implements StationStaffService {
         return savedPayment;
     }
 
-    @Override
-    public Deposit createDeposit(Integer staffId, Integer bookingId, BigDecimal amount) {
-        User staff = userRepository.findById(staffId)
-                .orElseThrow(() -> new RuntimeException("Staff not found"));
-        Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new RuntimeException("Booking not found"));
 
-        // Validate staff's station
-        if (!booking.getStation().getStationId().equals(staff.getStation().getStationId())) {
-            throw new RuntimeException("Unauthorized station");
-        }
-
-        Deposit deposit = new Deposit();
-        deposit.setBooking(booking);
-        deposit.setAmount(amount);
-        deposit.setStatus(DepositStatus.HELD);
-        Deposit savedDeposit = depositRepository.save(deposit);
-        logAudit(staff, "Created deposit " + savedDeposit.getDepositId() + " for booking " + bookingId);
-        return savedDeposit;
-    }
-
-    @Override
-    public Deposit refundDeposit(Integer staffId, Integer depositId) {
-        User staff = userRepository.findById(staffId)
-                .orElseThrow(() -> new RuntimeException("Staff not found"));
-        Deposit deposit = depositRepository.findById(depositId)
-                .orElseThrow(() -> new RuntimeException("Deposit not found"));
-
-        // Validate staff's station
-        if (!deposit.getBooking().getStation().getStationId().equals(staff.getStation().getStationId())) {
-            throw new RuntimeException("Unauthorized station");
-        }
-
-        deposit.setStatus(DepositStatus.REFUNDED);
-        Deposit updatedDeposit = depositRepository.save(deposit);
-        logAudit(staff, "Refunded deposit " + depositId);
-        return updatedDeposit;
-    }
 
     @Override
     public Vehicle updateVehicleStatus(Integer staffId, Integer vehicleId, BigDecimal batteryLevel, BigDecimal mileage, String status) {

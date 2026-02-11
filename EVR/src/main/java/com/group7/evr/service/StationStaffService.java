@@ -22,9 +22,7 @@ public interface StationStaffService {
 
     public Payment recordPayment(Integer staffId, Integer bookingId, String method, BigDecimal amount);
 
-    public Deposit createDeposit(Integer staffId, Integer bookingId, BigDecimal amount);
 
-    public Deposit refundDeposit(Integer staffId, Integer depositId);
 
     public Vehicle updateVehicleStatus(Integer staffId, Integer vehicleId, BigDecimal batteryLevel, BigDecimal mileage, String status);
 
