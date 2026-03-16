@@ -145,20 +145,6 @@ const VehicleSearchPage = () => {
                 Lọc theo model hoặc mức pin tối thiểu và xem nhanh các thông số quan trọng trước khi đặt xe.
               </p>
             </div>
-            <div className="vehicle-search-hero__metrics">
-              <div>
-                <span>Kết quả</span>
-                <strong>{fleetMetrics.total}</strong>
-              </div>
-              <div>
-                <span>Mức pin TB</span>
-                <strong>{averageBattery}%</strong>
-              </div>
-              <div>
-                <span>Sẵn sàng</span>
-                <strong>{fleetMetrics.available}</strong>
-              </div>
-            </div>
           </div>
         </section>
 

@@ -144,4 +144,7 @@ VALUES
   ('CREATE', '2025-01-09 15:15:00', 8),
   ('LOGOUT', '2025-01-10 16:30:00', 9);
 
+UPDATE Users
+SET EmailVerified = 1;
+
 

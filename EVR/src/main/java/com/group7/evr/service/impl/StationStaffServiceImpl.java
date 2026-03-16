@@ -136,30 +136,6 @@ public class StationStaffServiceImpl implements StationStaffService {
         return updatedUser;
     }
 
-    @Override
-    public Payment recordPayment(Integer staffId, Integer bookingId, String method, BigDecimal amount) {
-        User staff = userRepository.findById(staffId)
-                .orElseThrow(() -> new RuntimeException("Staff not found"));
-        Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new RuntimeException("Booking not found"));
-
-        // Validate staff's station
-        if (!booking.getStation().getStationId().equals(staff.getStation().getStationId())) {
-            throw new RuntimeException("Unauthorized station");
-        }
-
-        Payment payment = new Payment();
-        payment.setBooking(booking);
-        payment.setMethod(PaymentMethod.valueOf(method.toUpperCase())); // Convert string to enum
-        payment.setAmount(amount);
-        payment.setStatus(PaymentStatus.PENDING);
-        payment.setPaymentDate(LocalDateTime.now());
-        Payment savedPayment = paymentRepository.save(payment);
-        logAudit(staff, "Recorded payment " + savedPayment.getPaymentId() + " for booking " + bookingId);
-        return savedPayment;
-    }
-
-
 
     @Override
     public Vehicle updateVehicleStatus(Integer staffId, Integer vehicleId, BigDecimal batteryLevel, BigDecimal mileage, String status) {

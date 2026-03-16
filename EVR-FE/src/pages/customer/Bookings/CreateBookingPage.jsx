@@ -291,7 +291,7 @@ const CreateBookingPage = () => {
                   <FormInput
                     label="Thời gian nhận xe"
                     name="startTime"
-                    type="datetime-local"
+                    type="date"
                     value={formData.startTime}
                     onChange={handleChange}
                     required

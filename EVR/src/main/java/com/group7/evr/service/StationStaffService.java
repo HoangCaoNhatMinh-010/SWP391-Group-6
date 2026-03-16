@@ -20,9 +20,6 @@ public interface StationStaffService {
 
     public User verifyCustomer(Integer staffId, Integer userId);
 
-    public Payment recordPayment(Integer staffId, Integer bookingId, String method, BigDecimal amount);
-
-
 
     public Vehicle updateVehicleStatus(Integer staffId, Integer vehicleId, BigDecimal batteryLevel, BigDecimal mileage, String status);
 

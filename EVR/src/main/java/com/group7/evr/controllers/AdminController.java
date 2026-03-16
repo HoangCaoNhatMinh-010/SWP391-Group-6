@@ -80,12 +80,6 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getStaffByStation(stationId));
     }
 
-    @GetMapping("/staff/{id}/performance")
-    public ResponseEntity<Map<String, Object>> getStaffPerformance(@PathVariable Integer id) {
-        return ResponseEntity.ok(adminService.getStaffPerformance(id));
-    }
-
-
     // Reports and analytics
     @GetMapping("/reports/revenue")
     public ResponseEntity<Map<String, Object>> getRevenueReport(

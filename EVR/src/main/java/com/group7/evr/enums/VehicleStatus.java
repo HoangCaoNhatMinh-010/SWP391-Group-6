@@ -2,9 +2,8 @@ package com.group7.evr.enums;
 
 public enum VehicleStatus {
     AVAILABLE("Available"),
-    RENTED("Rented"),
-    MAINTENANCE("Maintenance");
-
+    MAINTENANCE("Maintenance"),
+    RENTED("Rented");
     private final String value;
 
     VehicleStatus(String value) {

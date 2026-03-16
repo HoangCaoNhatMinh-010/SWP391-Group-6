@@ -36,7 +36,7 @@ const VehiclesManagementPage = () => {
           pagination.pageSize,
           statusFilter || null
         );
-        
+
         if (response && response.vehicles) {
           setVehicles(Array.isArray(response.vehicles) ? response.vehicles : []);
           setPagination({
@@ -122,7 +122,6 @@ const VehiclesManagementPage = () => {
             <select id="statusFilter" value={statusFilter} onChange={handleStatusFilterChange}>
               <option value="">Tất cả</option>
               <option value="AVAILABLE">Available</option>
-              <option value="RENTED">Rented</option>
               <option value="MAINTENANCE">Maintenance</option>
             </select>
           </div>
@@ -168,9 +167,8 @@ const VehiclesManagementPage = () => {
                     <td>{vehicle.mileage != null ? `${vehicle.mileage} km` : '—'}</td>
                     <td>
                       <span
-                        className={`admin-vehicles__status admin-vehicles__status--${
-                          statusTone[vehicle.status] || 'neutral'
-                        }`}
+                        className={`admin-vehicles__status admin-vehicles__status--${statusTone[vehicle.status] || 'neutral'
+                          }`}
                       >
                         {vehicle.status}
                       </span>
@@ -188,7 +186,7 @@ const VehiclesManagementPage = () => {
                 ))}
               </tbody>
             </table>
-            
+
             {pagination.totalPages > 1 && (
               <div className="admin-vehicles__pagination">
                 <button
@@ -200,7 +198,7 @@ const VehiclesManagementPage = () => {
                   Trước
                 </button>
                 <span className="admin-vehicles__pagination-info">
-                  Trang {pagination.currentPage + 1} / {pagination.totalPages} 
+                  Trang {pagination.currentPage + 1} / {pagination.totalPages}
                   ({pagination.totalItems} xe)
                 </span>
                 <button

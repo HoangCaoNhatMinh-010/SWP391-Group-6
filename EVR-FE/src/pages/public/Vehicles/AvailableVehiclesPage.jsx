@@ -303,16 +303,16 @@ const AvailableVehiclesPage = () => {
                           {batteryTone === 'high'
                             ? 'Sẵn sàng đường dài'
                             : batteryTone === 'medium'
-                            ? 'Thích hợp đô thị'
-                            : batteryTone === 'low'
-                            ? 'Nên sạc trước chuyến'
-                            : 'Cần sạc'}
+                              ? 'Thích hợp đô thị'
+                              : batteryTone === 'low'
+                                ? 'Nên sạc trước chuyến'
+                                : 'Cần sạc'}
                         </span>
                       </div>
 
                       <div className="vehicle-card__body">
                         <header>
-                          <h3>{vehicle.model?.name || 'Mẫu xe EVR'}</h3>
+                          <h3>{vehicle.model?.modelName || 'Mẫu xe EVR'}</h3>
                           <p>{vehicle.plateNumber || 'Biển số đang cập nhật'}</p>
                         </header>
 
