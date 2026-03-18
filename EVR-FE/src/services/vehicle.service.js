@@ -19,14 +19,14 @@ export const vehicleService = {
     if (page !== null) params.page = page;
     if (size !== null) params.size = size;
     if (status) params.status = status;
-    
+
     const response = await apiClient.get(ENDPOINTS.GET_VEHICLES, { params });
-    
+
     // If pagination response
     if (response && typeof response === 'object' && 'vehicles' in response) {
       return response;
     }
-    
+
     // Legacy response (array)
     if (Array.isArray(response)) {
       return {
@@ -36,7 +36,7 @@ export const vehicleService = {
         totalPages: 1,
       };
     }
-    
+
     return {
       vehicles: [],
       currentPage: 0,

@@ -95,7 +95,7 @@ const VehicleSearchPage = () => {
       const modelId = filters.modelId ? Number(filters.modelId) : null;
       const minBattery = filters.minBattery ? Number(filters.minBattery) : null;
       const data = await vehicleService.getVehicles(modelId, minBattery);
-      setVehicles(Array.isArray(data) ? data : []);
+      setVehicles(data.vehicles || []);
     } catch (err) {
       setError(err.response?.data?.message || 'Không thể tìm kiếm xe.');
     } finally {
