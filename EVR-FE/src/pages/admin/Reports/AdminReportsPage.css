@@ -1,0 +1,263 @@
+.admin-report-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  color: #f2f6ff;
+}
+
+.admin-report-hero {
+  background: linear-gradient(135deg, rgba(10, 37, 64, 0.92), rgba(13, 28, 50, 0.92));
+  border-radius: 26px;
+  padding: 2.6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  box-shadow: 0 24px 44px rgba(4, 10, 22, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-report-hero__text h1 {
+  margin: 1rem 0;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+}
+
+.admin-report-hero__text p {
+  margin: 0;
+  opacity: 0.82;
+  max-width: 480px;
+}
+
+.admin-report-eyebrow {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.admin-report-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
+  align-self: flex-start;
+}
+
+.admin-report-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-report-filter label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.admin-report-filter select,
+.admin-report-filter input {
+  height: 46px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #ffffff;
+  color: #000000;
+  padding: 0 1rem;
+}
+
+.admin-report-filter input[type="datetime-local"] {
+  position: relative;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.admin-report-filter input::-webkit-calendar-picker-indicator {
+  filter: none;
+  opacity: 1;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  background-color: transparent;
+}
+
+.admin-report-filter input::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.7;
+}
+
+.admin-report-search-btn {
+  height: 46px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 209, 255, 0.2);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0 1.5rem;
+}
+
+.admin-report-search-btn:hover {
+  background: rgba(0, 209, 255, 0.3);
+  border-color: rgba(0, 209, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.admin-report-search-btn:active {
+  transform: translateY(0);
+}
+
+.admin-report-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.admin-report-card {
+  border-radius: 22px;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 38px rgba(5, 13, 26, 0.4);
+}
+
+.admin-report-card span {
+  font-size: 0.82rem;
+  opacity: 0.78;
+}
+
+.admin-report-card strong {
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.admin-report-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.admin-report-card--primary {
+  background: linear-gradient(135deg, rgba(0, 209, 255, 0.32), rgba(16, 63, 117, 0.45));
+  border-color: rgba(0, 209, 255, 0.38);
+}
+
+.admin-report-card--teal {
+  background: linear-gradient(135deg, rgba(21, 255, 179, 0.28), rgba(15, 72, 66, 0.45));
+  border-color: rgba(21, 255, 179, 0.35);
+}
+
+.admin-report-card--purple {
+  background: linear-gradient(135deg, rgba(130, 106, 255, 0.28), rgba(45, 26, 104, 0.45));
+  border-color: rgba(130, 106, 255, 0.32);
+}
+
+.admin-report-panel {
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.88), rgba(4, 10, 22, 0.92));
+  border-radius: 24px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 44px rgba(4, 10, 22, 0.4);
+  display: grid;
+  gap: 1.4rem;
+}
+
+.admin-report-panel header h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #ffffff;
+}
+
+.admin-report-panel header span {
+  font-size: 0.92rem;
+  color: rgba(240, 244, 255, 0.7);
+}
+
+.admin-report-table {
+  overflow-x: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.admin-report-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+
+.admin-report-table th,
+.admin-report-table td {
+  padding: 1rem 1.4rem;
+  text-align: left;
+}
+
+.admin-report-table th {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.admin-report-table tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.admin-report-table tbody tr:hover {
+  background: rgba(0, 209, 255, 0.12);
+}
+
+.admin-report-table td {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.95rem;
+}
+
+.admin-report-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.admin-report-list li {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+}
+
+.admin-report-loading,
+.admin-report-error {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 22px;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-report-placeholder {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 22px;
+  padding: 2.5rem;
+  text-align: center;
+  color: rgba(240, 244, 255, 0.8);
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 768px) {
+  .admin-report-hero {
+    padding: 2rem;
+  }
+}
+
+

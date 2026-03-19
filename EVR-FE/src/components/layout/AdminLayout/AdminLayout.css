@@ -1,0 +1,50 @@
+.admin-shell {
+  min-height: 100vh;
+  background: radial-gradient(circle at 5% 0%, rgba(0, 209, 255, 0.12), transparent 55%),
+    radial-gradient(circle at 95% 0%, rgba(21, 255, 179, 0.12), transparent 55%),
+    #050d1a;
+  color: #f2f6ff;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-shell__body {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+}
+
+.admin-shell__content {
+  flex: 1;
+  padding: 2.5rem;
+  background: linear-gradient(180deg, rgba(8, 16, 30, 0.65), rgba(4, 8, 16, 0.9));
+  overflow-y: auto;
+}
+
+.admin-shell select,
+.admin-shell .form-select {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.admin-shell select option,
+.admin-shell .form-select option {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.admin-shell select option:checked,
+.admin-shell select option:hover,
+.admin-shell .form-select option:checked,
+.admin-shell .form-select option:hover {
+  background-color: #e0ecff;
+  color: #000000;
+}
+
+@media (max-width: 992px) {
+  .admin-shell__content {
+    padding: 1.8rem;
+  }
+}
+
+

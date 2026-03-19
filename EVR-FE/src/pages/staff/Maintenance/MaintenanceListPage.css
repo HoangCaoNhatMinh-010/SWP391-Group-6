@@ -1,0 +1,435 @@
+.maintenance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.maintenance-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(10, 37, 64, 0.92), rgba(14, 44, 78, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(4, 10, 22, 0.35);
+  color: #ffffff;
+}
+
+.maintenance-list__eyebrow {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.maintenance-list__header h1 {
+  margin: 0.5rem 0 0.5rem;
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.maintenance-list__header p {
+  margin: 0;
+  color: rgba(240, 244, 255, 0.75);
+  font-size: 0.95rem;
+  max-width: 500px;
+}
+
+.maintenance-list__create-btn {
+  padding: 0.7rem 1.4rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(135deg, #00d1ff 0%, #15ffb3 100%);
+  color: #0a2540;
+  border: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 209, 255, 0.25);
+}
+
+.maintenance-list__create-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 209, 255, 0.35);
+}
+
+.maintenance-list__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.maintenance-list__metric-card {
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 12px rgba(4, 10, 22, 0.25);
+  display: grid;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.maintenance-list__metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(4, 10, 22, 0.35);
+}
+
+.maintenance-list__metric-card span {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+.maintenance-list__metric-card strong {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.maintenance-list__filters {
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 8px rgba(4, 10, 22, 0.2);
+}
+
+.maintenance-list__filter-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.maintenance-list__filter-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+}
+
+.maintenance-list__filter-group select {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(15, 40, 80, 0.2);
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0a2540;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 160px;
+}
+
+.maintenance-list__filter-group select:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: rgba(0, 209, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 209, 255, 0.2);
+}
+
+.maintenance-list__filter-group option {
+  background: #ffffff;
+  color: #0a2540;
+}
+
+.maintenance-list__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.maintenance-list__empty {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.maintenance-list__empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.maintenance-list__empty h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.maintenance-list__empty p {
+  margin: 0 0 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+.maintenance-list__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.maintenance-list__card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(4, 10, 22, 0.3);
+  display: grid;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.maintenance-list__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(4, 10, 22, 0.4);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.maintenance-list__card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.maintenance-list__card-id {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.maintenance-list__card-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.maintenance-list__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  background: rgba(var(--status-color-rgb, 0, 140, 255), 0.18);
+  color: var(--status-color, #006fd6);
+}
+
+.maintenance-list__status.status--open {
+  background: rgba(0, 140, 255, 0.18);
+  color: #006fd6;
+}
+
+.maintenance-list__status.status--progress {
+  background: rgba(255, 184, 0, 0.22);
+  color: #ffb84d;
+}
+
+.maintenance-list__status.status--closed {
+  background: rgba(0, 181, 123, 0.18);
+  color: #15ffb3;
+}
+
+.maintenance-list__vehicle {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0.9rem;
+  padding: 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.maintenance-list__vehicle-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(0, 209, 255, 0.1), rgba(21, 255, 179, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.maintenance-list__vehicle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.6rem;
+}
+
+.maintenance-list__vehicle-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.maintenance-list__vehicle-info strong {
+  display: block;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.maintenance-list__vehicle-info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.maintenance-list__battery {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.65rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.maintenance-list__battery span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+.maintenance-list__battery strong {
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.maintenance-list__card-content {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.maintenance-list__info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.maintenance-list__info-item span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+.maintenance-list__info-item strong {
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.maintenance-list__info-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.maintenance-list__card-footer {
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.maintenance-list__card-footer .btn {
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.maintenance-list__card-footer .btn-outline-primary {
+  border: 1.5px solid rgba(0, 209, 255, 0.5);
+  color: #00d1ff;
+  background: transparent;
+}
+
+.maintenance-list__card-footer .btn-outline-primary:hover {
+  background: rgba(0, 209, 255, 0.15);
+  border-color: #00d1ff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1024px) {
+  .maintenance-list__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .maintenance-list__create-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .maintenance-list__metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .maintenance-list__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .maintenance-list__header {
+    padding: 1.5rem;
+  }
+
+  .maintenance-list__metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .maintenance-list__vehicle {
+    grid-template-columns: 1fr;
+  }
+
+  .maintenance-list__vehicle-image {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
