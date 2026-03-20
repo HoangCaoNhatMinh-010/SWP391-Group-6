@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '@contexts/AuthContext';
 import StaffLayout from '@components/layout/StaffLayout/StaffLayout';
-
 import './StaffDashboardPage.css';
 
 const quickLinks = [
@@ -11,13 +10,6 @@ const quickLinks = [
     cta: 'Đi tới check-in',
     href: '/staff/bookings/check-in',
     variant: 'primary',
-  },
-  {
-    title: 'Bàn giao nhanh',
-    description: 'Tạo biên bản bàn giao giữa ca trực hoặc giữa trạm.',
-    cta: 'Tạo bàn giao',
-    href: '/staff/handover/create',
-    variant: 'teal',
   },
   {
     title: 'Theo dõi bảo dưỡng',
@@ -40,14 +32,9 @@ const StaffDashboardPage = () => {
             <h1>Xin chào, {user?.name || 'nhân viên EVR'}!</h1>
             <p>Quản lý vận hành trạm, hỗ trợ khách hàng và đảm bảo xe luôn sẵn sàng.</p>
           </div>
-          <div className="staff-dashboard__shift">
-            <span>Ca làm việc</span>
-            <strong>Hôm nay</strong>
-            <small>Kiểm tra bảng phân ca trong mục handover</small>
-          </div>
         </section>
 
-        <section className="staff-dashboard__metrics">
+        {/* <section className="staff-dashboard__metrics">
           <article>
             <span>Check-in hôm nay</span>
             <strong>0</strong>
@@ -63,7 +50,7 @@ const StaffDashboardPage = () => {
             <strong>0</strong>
             <p>Ghi nhận nhật ký ca trực đầy đủ.</p>
           </article>
-        </section>
+        </section> */}
 
         <section className="staff-dashboard__links">
           {quickLinks.map((item) => (

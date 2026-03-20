@@ -13,13 +13,22 @@ const STATUS_METADATA = {
   MAINTENANCE: { label: 'Bảo trì', badge: 'status--maintenance' },
 };
 
-const MODEL_IMAGE_MAP = {
+/* const MODEL_IMAGE_MAP = {
   urban: '/images/models/urban-compact.svg',
   executive: '/images/models/executive-sedan.svg',
   adventure: '/images/models/adventure-suv.svg',
   suv: '/images/models/adventure-suv.svg',
   sedan: '/images/models/executive-sedan.svg',
   compact: '/images/models/urban-compact.svg',
+}; */
+
+const MODEL_IMAGE_MAP = {
+  urban: '../images/vehicles/urban-compact.svg',
+  executive: '../images/vehicles/executive-sedan.svg',
+  adventure: '../images/vehicles/adventure-suv.svg',
+  suv: '../images/vehicles/adventure-suv.svg',
+  sedan: '../images/vehicles/executive-sedan.svg',
+  compact: '../images/vehicles/urban-compact.svg',
 };
 
 const normalizeModelImage = (rawPath) => {
@@ -69,7 +78,8 @@ const getModelImage = (vehicle) => {
     normalized.includes(key)
   );
 
-  return matchedKey ? MODEL_IMAGE_MAP[matchedKey] : '/images/models/default-vehicle.svg';
+  // return matchedKey ? MODEL_IMAGE_MAP[matchedKey] : '/images/models/default-vehicle.svg';
+  return matchedKey ? MODEL_IMAGE_MAP[matchedKey] : '../images/models/default-vehicle.svg';
 };
 
 const VehicleSearchPage = () => {
@@ -95,7 +105,7 @@ const VehicleSearchPage = () => {
       const modelId = filters.modelId ? Number(filters.modelId) : null;
       const minBattery = filters.minBattery ? Number(filters.minBattery) : null;
       const data = await vehicleService.getVehicles(modelId, minBattery);
-      setVehicles(Array.isArray(data) ? data : []);
+      setVehicles(data.vehicles || []);
     } catch (err) {
       setError(err.response?.data?.message || 'Không thể tìm kiếm xe.');
     } finally {
@@ -145,20 +155,6 @@ const VehicleSearchPage = () => {
                 Lọc theo model hoặc mức pin tối thiểu và xem nhanh các thông số quan trọng trước khi đặt xe.
               </p>
             </div>
-            <div className="vehicle-search-hero__metrics">
-              <div>
-                <span>Kết quả</span>
-                <strong>{fleetMetrics.total}</strong>
-              </div>
-              <div>
-                <span>Mức pin TB</span>
-                <strong>{averageBattery}%</strong>
-              </div>
-              <div>
-                <span>Sẵn sàng</span>
-                <strong>{fleetMetrics.available}</strong>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -207,7 +203,31 @@ const VehicleSearchPage = () => {
                     </button>
                   </div>
                 </form>
-
+                <div className="model-list-table" style={{ marginTop: '2rem' }}>
+                  <h3>Danh sách Model</h3>
+                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                    <thead>
+                      <tr>
+                        <th style={{ borderBottom: '1px solid #ccc', textAlign: 'left', padding: '0.5rem' }}>Model ID</th>
+                        <th style={{ borderBottom: '1px solid #ccc', textAlign: 'left', padding: '0.5rem' }}>Model Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>1</td>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF 5</td>
+                      </tr>
+                      <tr>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>2</td>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF 6</td>
+                      </tr>
+                      <tr>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>3</td>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF 7</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
                 <ErrorMessage message={error} onDismiss={() => setError(null)} />
               </div>
             </aside>
@@ -249,6 +269,10 @@ const VehicleSearchPage = () => {
                             <div>
                               <dt>Mức pin</dt>
                               <dd>{vehicle.batteryLevel ?? 0}%</dd>
+                            </div>
+                            <div>
+                              <dt>Tên trạm</dt>
+                              <dd>{vehicle.station?.name || '—'}</dd>
                             </div>
                             <div>
                               <dt>Mã trạm</dt>

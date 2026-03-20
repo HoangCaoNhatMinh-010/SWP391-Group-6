@@ -33,49 +33,49 @@ const FALLBACK_MODELS = [
     name: 'VF 3',
     detail: 'Xe điện mini đô thị, nhỏ gọn, dễ lái, phù hợp di chuyển ngắn trong thành phố.',
     priceLabel: 'Từ 199K/giờ',
-    image: '/images/models/urban-compact.svg',
+    image: '../images/model/vf3.jpg',
   },
   {
     name: 'VF 5 Plus',
     detail: 'SUV điện cỡ nhỏ, thiết kế trẻ trung, phù hợp đi lại hằng ngày và gia đình nhỏ.',
     priceLabel: 'Từ 499K/ngày',
-    image: '/images/models/compact-suv.svg',
+    image: '../images/model/vf5.jpg',
   },
   {
     name: 'VF 6',
     detail: 'SUV điện hạng B, nội thất hiện đại, cân bằng giữa tiện nghi và khả năng vận hành.',
     priceLabel: 'Từ 599K/ngày',
-    image: '/images/models/compact-suv.svg',
+    image: '../images/model/vf6.jpg',
   },
   {
     name: 'VF 7',
     detail: 'SUV điện hạng C, không gian rộng rãi, phù hợp gia đình và các chuyến đi dài.',
     priceLabel: 'Từ 699K/ngày',
-    image: '/images/models/midsize-suv.svg',
+    image: '../images/model/vf7.jpg',
   },
   {
     name: 'VF 8',
     detail: 'SUV điện hạng D, trang bị cao cấp, vận hành mạnh mẽ cho nhu cầu cao cấp hơn.',
     priceLabel: 'Từ 899K/ngày',
-    image: '/images/models/large-suv.svg',
+    image: '../images/model/vf8.jpg',
   },
   {
     name: 'VF 9',
     detail: 'SUV điện cỡ lớn 7 chỗ, phù hợp gia đình đông người và di chuyển đường dài.',
     priceLabel: 'Từ 1.099K/ngày',
-    image: '/images/models/fullsize-suv.svg',
+    image: '../images/model/vf9.png',
   },
   {
     name: 'VF e34',
     detail: 'SUV điện cỡ nhỏ, mẫu xe điện phổ biến, phù hợp cá nhân và chạy dịch vụ.',
     priceLabel: 'Từ 599K/ngày',
-    image: '/images/models/compact-suv.svg',
+    image: '../images/model/vfe34.jpg',
   },
   {
     name: 'Limo Green',
     detail: 'MPV điện 7 chỗ, không gian rộng, tối ưu cho gia đình lớn hoặc dịch vụ vận chuyển.',
     priceLabel: 'Từ 799K/ngày',
-    image: '/images/models/mpv.svg',
+    image: '../images/model/vfLimoGreen.jpg',
   },
 ];
 
@@ -133,15 +133,15 @@ const LandingPage = () => {
     const fallbackImageByName = (modelName = '') => {
       const normalized = modelName.toLowerCase().replace(/\s+/g, '');
       if (normalized.includes('urban') || normalized.includes('compact')) {
-        return '/images/models/urban-compact.svg';
+        return '../images/vehicles/urban-compact.svg';
       }
       if (normalized.includes('executive') || normalized.includes('sedan')) {
-        return '/images/models/executive-sedan.svg';
+        return '../images/vehicles/executive-sedan.svg';
       }
       if (normalized.includes('adventure') || normalized.includes('suv')) {
-        return '/images/models/adventure-suv.svg';
+        return '../images/vehicles/adventure-suv.svg';
       }
-      return '/images/models/default-vehicle.svg';
+      return '../images/models/default-vehicle.svg';      
     };
 
     const formatPrice = (basePrice) => {

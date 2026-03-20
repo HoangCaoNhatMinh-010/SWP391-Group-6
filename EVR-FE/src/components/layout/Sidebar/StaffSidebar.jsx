@@ -9,6 +9,8 @@ const StaffSidebar = ({ collapsed }) => {
   const menu = useMemo(
     () => [
       { path: '/staff/dashboard', label: 'Bảng điều khiển', icon: 'dashboard' },
+      { path: '/staff/bookings/check-in', label: 'Check-in khách', icon: 'check' },
+      { path: '/staff/bookings/return', label: 'Trả xe', icon: 'return' },
       { path: '/staff/contracts', label: 'Quản lý hợp đồng', icon: 'contracts' },
       { path: '/staff/bookings/check-in', label: 'Check-in khách', icon: 'check' },
       { path: '/staff/bookings/return', label: 'Trả xe', icon: 'return' },

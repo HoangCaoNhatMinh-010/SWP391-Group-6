@@ -28,10 +28,8 @@ public class StationStaffServiceImpl implements StationStaffService {
     private ContractRepository contractRepository;
     @Autowired
     private VehicleConditionReportRepository reportRepository;
-    @Autowired
-    private PaymentRepository paymentRepository;
-    @Autowired
-    private DepositRepository depositRepository;
+    /* @Autowired
+    private PaymentRepository paymentRepository; */
     @Autowired
     private ComplaintRepository complaintRepository;
     @Autowired
@@ -138,67 +136,6 @@ public class StationStaffServiceImpl implements StationStaffService {
         return updatedUser;
     }
 
-    @Override
-    public Payment recordPayment(Integer staffId, Integer bookingId, String method, BigDecimal amount) {
-        User staff = userRepository.findById(staffId)
-                .orElseThrow(() -> new RuntimeException("Staff not found"));
-        Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new RuntimeException("Booking not found"));
-
-        // Validate staff's station
-        if (!booking.getStation().getStationId().equals(staff.getStation().getStationId())) {
-            throw new RuntimeException("Unauthorized station");
-        }
-
-        Payment payment = new Payment();
-        payment.setBooking(booking);
-        payment.setMethod(PaymentMethod.valueOf(method.toUpperCase())); // Convert string to enum
-        payment.setAmount(amount);
-        payment.setStatus(PaymentStatus.PENDING);
-        payment.setPaymentDate(LocalDateTime.now());
-        Payment savedPayment = paymentRepository.save(payment);
-        logAudit(staff, "Recorded payment " + savedPayment.getPaymentId() + " for booking " + bookingId);
-        return savedPayment;
-    }
-
-    @Override
-    public Deposit createDeposit(Integer staffId, Integer bookingId, BigDecimal amount) {
-        User staff = userRepository.findById(staffId)
-                .orElseThrow(() -> new RuntimeException("Staff not found"));
-        Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new RuntimeException("Booking not found"));
-
-        // Validate staff's station
-        if (!booking.getStation().getStationId().equals(staff.getStation().getStationId())) {
-            throw new RuntimeException("Unauthorized station");
-        }
-
-        Deposit deposit = new Deposit();
-        deposit.setBooking(booking);
-        deposit.setAmount(amount);
-        deposit.setStatus(DepositStatus.HELD);
-        Deposit savedDeposit = depositRepository.save(deposit);
-        logAudit(staff, "Created deposit " + savedDeposit.getDepositId() + " for booking " + bookingId);
-        return savedDeposit;
-    }
-
-    @Override
-    public Deposit refundDeposit(Integer staffId, Integer depositId) {
-        User staff = userRepository.findById(staffId)
-                .orElseThrow(() -> new RuntimeException("Staff not found"));
-        Deposit deposit = depositRepository.findById(depositId)
-                .orElseThrow(() -> new RuntimeException("Deposit not found"));
-
-        // Validate staff's station
-        if (!deposit.getBooking().getStation().getStationId().equals(staff.getStation().getStationId())) {
-            throw new RuntimeException("Unauthorized station");
-        }
-
-        deposit.setStatus(DepositStatus.REFUNDED);
-        Deposit updatedDeposit = depositRepository.save(deposit);
-        logAudit(staff, "Refunded deposit " + depositId);
-        return updatedDeposit;
-    }
 
     @Override
     public Vehicle updateVehicleStatus(Integer staffId, Integer vehicleId, BigDecimal batteryLevel, BigDecimal mileage, String status) {

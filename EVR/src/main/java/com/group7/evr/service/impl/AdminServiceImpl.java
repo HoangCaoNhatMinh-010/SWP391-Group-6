@@ -33,20 +33,15 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Map<String, Object> getFleetSummary(Integer stationId) {
-        List<Vehicle> vehicles = vehicleRepository.findByStationStationIdAndStatus(stationId, VehicleStatus.AVAILABLE);
-        List<Vehicle> rentedVehicles = vehicleRepository.findByStationStationIdAndStatus(stationId, VehicleStatus.RENTED);
-        List<Vehicle> maintenanceVehicles = vehicleRepository.findByStationStationIdAndStatus(stationId, VehicleStatus.MAINTENANCE);
+        List<Vehicle> vehicles = vehicleRepository.findByStatus(VehicleStatus.AVAILABLE);
+        List<Vehicle> maintenanceVehicles = vehicleRepository.findByStatus(VehicleStatus.MAINTENANCE);
 
         Map<String, Object> summary = new HashMap<>();
-        summary.put("totalVehicles", vehicles.size() + rentedVehicles.size() + maintenanceVehicles.size());
+        summary.put("totalVehicles", vehicles.size() + maintenanceVehicles.size());
         summary.put("availableVehicles", vehicles.size());
-        summary.put("rentedVehicles", rentedVehicles.size());
         summary.put("maintenanceVehicles", maintenanceVehicles.size());
-        summary.put("occupancyRate", calculateOccupancyRate(vehicles.size(), rentedVehicles.size()));
-
         return summary;
     }
-
     @Override
     public Vehicle dispatchVehicle(Integer fromStationId, Integer toStationId, Integer vehicleId) {
         Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow();
@@ -79,21 +74,6 @@ public class AdminServiceImpl implements AdminService {
                 .filter(user -> user.getStation() != null && user.getStation().getStationId().equals(stationId))
                 .toList();
     }
-
-    @Override
-    public Map<String, Object> getStaffPerformance(Integer staffId) {
-        User staff = userRepository.findById(staffId).orElseThrow();
-        List<Booking> handovers = bookingRepository.findByStaffUserId(staffId);
-
-        Map<String, Object> performance = new HashMap<>();
-        performance.put("totalHandovers", handovers.size());
-        performance.put("station", staff.getStation().getName());
-        performance.put("averageRating", calculateAverageRating(staffId)); // Mock calculation
-        performance.put("lastActivity", getLastActivity(staffId));
-
-        return performance;
-    }
-
 
     @Override
     public Map<String, Object> getRevenueReport(Integer stationId, LocalDateTime from, LocalDateTime to) {

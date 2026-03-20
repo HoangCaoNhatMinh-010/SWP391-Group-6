@@ -18,8 +18,6 @@ public interface AdminService {
 
     public List<User> getStaffByStation(Integer stationId);
 
-    public Map<String, Object> getStaffPerformance(Integer staffId);
-
     public Map<String, Object> getRevenueReport(Integer stationId, LocalDateTime from, LocalDateTime to);
 
     public Map<String, Object> getUtilizationReport(Integer stationId);
