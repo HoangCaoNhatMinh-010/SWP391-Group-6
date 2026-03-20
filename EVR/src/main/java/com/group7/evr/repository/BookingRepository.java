@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
+// import java.time.LocalDateTime;
 import java.util.List;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking,Integer> {

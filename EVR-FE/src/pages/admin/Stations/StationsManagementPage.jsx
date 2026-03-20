@@ -71,6 +71,8 @@ const StationsManagementPage = () => {
                   <th>Trạm</th>
                   <th>Địa chỉ</th>
                   <th>Liên hệ</th>
+                  <th>Số chỗ trống</th>
+                  <th>Tổng chỗ</th>
                   <th />
                 </tr>
               </thead>
@@ -81,6 +83,8 @@ const StationsManagementPage = () => {
                     <td>{station.name}</td>
                     <td>{station.address}</td>
                     <td>{station.contactNumber || '—'}</td>
+                    <td>{station.availableSlots ?? '—'}</td>
+                    <td>{station.totalSlots ?? '—'}</td>
                     <td>
                       <div className="admin-stations__actions">
                         <Link to={`/admin/stations/${station.stationId}/edit`}>Chỉnh sửa</Link>

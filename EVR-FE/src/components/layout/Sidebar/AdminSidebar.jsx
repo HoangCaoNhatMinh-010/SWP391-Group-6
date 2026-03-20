@@ -25,6 +25,7 @@ const AdminSidebar = ({ collapsed }) => {
         items: [
           { path: '/admin/stations', label: 'Trạm', icon: 'map-pin' },
           { path: '/admin/vehicles', label: 'Đội xe', icon: 'truck' },
+          { path: '/admin/staff', label: 'Nhân sự', icon: 'users' },
           { path: '/admin/users', label: 'Khách hàng', icon: 'user-check' },
           { path: '/admin/complaints', label: 'Khiếu nại', icon: 'message-square' },
         ],
@@ -33,6 +34,15 @@ const AdminSidebar = ({ collapsed }) => {
         section: 'Điều phối',
         items: [
           { path: '/admin/fleet/dispatch', label: 'Điều xe', icon: 'navigation-2' },
+          { path: '/admin/staff/schedule/create', label: 'Lịch làm việc', icon: 'calendar' },
+        ],
+      },
+      {
+        section: 'Phân tích',
+        items: [
+          { path: '/admin/reports/utilization', label: 'Hiệu suất xe', icon: 'activity' },
+          { path: '/admin/reports/peaks', label: 'Khung giờ cao điểm', icon: 'clock' },
+          { path: '/admin/reports/forecast', label: 'Dự báo nhu cầu', icon: 'trending-up' },
         ],
       },
     ],

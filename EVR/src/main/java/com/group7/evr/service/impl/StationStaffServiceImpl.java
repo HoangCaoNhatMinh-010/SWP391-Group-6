@@ -28,8 +28,8 @@ public class StationStaffServiceImpl implements StationStaffService {
     private ContractRepository contractRepository;
     @Autowired
     private VehicleConditionReportRepository reportRepository;
-    @Autowired
-    private PaymentRepository paymentRepository;
+    /* @Autowired
+    private PaymentRepository paymentRepository; */
     @Autowired
     private ComplaintRepository complaintRepository;
     @Autowired

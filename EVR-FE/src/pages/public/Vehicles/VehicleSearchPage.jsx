@@ -13,13 +13,22 @@ const STATUS_METADATA = {
   MAINTENANCE: { label: 'Bảo trì', badge: 'status--maintenance' },
 };
 
-const MODEL_IMAGE_MAP = {
+/* const MODEL_IMAGE_MAP = {
   urban: '/images/models/urban-compact.svg',
   executive: '/images/models/executive-sedan.svg',
   adventure: '/images/models/adventure-suv.svg',
   suv: '/images/models/adventure-suv.svg',
   sedan: '/images/models/executive-sedan.svg',
   compact: '/images/models/urban-compact.svg',
+}; */
+
+const MODEL_IMAGE_MAP = {
+  urban: '../images/vehicles/urban-compact.svg',
+  executive: '../images/vehicles/executive-sedan.svg',
+  adventure: '../images/vehicles/adventure-suv.svg',
+  suv: '../images/vehicles/adventure-suv.svg',
+  sedan: '../images/vehicles/executive-sedan.svg',
+  compact: '../images/vehicles/urban-compact.svg',
 };
 
 const normalizeModelImage = (rawPath) => {
@@ -69,7 +78,8 @@ const getModelImage = (vehicle) => {
     normalized.includes(key)
   );
 
-  return matchedKey ? MODEL_IMAGE_MAP[matchedKey] : '/images/models/default-vehicle.svg';
+  // return matchedKey ? MODEL_IMAGE_MAP[matchedKey] : '/images/models/default-vehicle.svg';
+  return matchedKey ? MODEL_IMAGE_MAP[matchedKey] : '../images/models/default-vehicle.svg';
 };
 
 const VehicleSearchPage = () => {

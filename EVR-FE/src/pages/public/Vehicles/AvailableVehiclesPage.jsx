@@ -307,6 +307,10 @@ const AvailableVehiclesPage = () => {
                               : batteryTone === 'low'
                                 ? 'Nên sạc trước chuyến'
                                 : 'Cần sạc'}
+                            ? 'Thích hợp đô thị'
+                            : batteryTone === 'low'
+                            ? 'Nên sạc trước chuyến'
+                            : 'Cần sạc'}
                         </span>
                       </div>
 
