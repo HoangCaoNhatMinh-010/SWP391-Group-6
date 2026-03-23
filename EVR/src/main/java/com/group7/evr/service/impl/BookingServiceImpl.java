@@ -66,6 +66,7 @@ public class BookingServiceImpl implements BookingService {
             throw new RuntimeException("Xe đã có lịch đặt trong khoảng thời gian này");
         }
 
+
         // Validate booking dates
         if (booking.getStartTime() != null && booking.getEndTime() != null) {
             if (booking.getStartTime().after(booking.getEndTime())) {

@@ -13,7 +13,7 @@ import SuccessMessage from '@components/common/SuccessMessage';
 
 import './CreateBookingPage.css';
 
-const PRICE_PER_DAY = 250000;
+//const PRICE_PER_DAY = 250000; 
 
 const normalizeModelImage = (rawPath) => {
   if (!rawPath) {
@@ -157,20 +157,46 @@ const CreateBookingPage = () => {
     [vehicles, formData.vehicleId]
   );
 
+  // const rentalSummary = useMemo(() => {
+  //   if (!formData.startTime || !formData.endTime) {
+  //     return { duration: 0, total: 0 };
+  //   }
+  //   const start = new Date(formData.startTime);
+  //   const end = new Date(formData.endTime);
+  //   if (Number.isNaN(start.valueOf()) || Number.isNaN(end.valueOf()) || end <= start) {
+  //     return { duration: 0, total: 0 };
+  //   }
+  //   const milliseconds = end.getTime() - start.getTime();
+  //   const duration = Math.ceil(milliseconds / (1000 * 60 * 60 * 24));
+  //   const total = duration * PRICE_PER_DAY;
+  //   return { duration, total };
+  // }, [formData.startTime, formData.endTime]);
   const rentalSummary = useMemo(() => {
-    if (!formData.startTime || !formData.endTime) {
+    if (!formData.startTime || !formData.endTime || !selectedVehicle) {
       return { duration: 0, total: 0 };
     }
+
     const start = new Date(formData.startTime);
     const end = new Date(formData.endTime);
-    if (Number.isNaN(start.valueOf()) || Number.isNaN(end.valueOf()) || end <= start) {
+
+    if (
+      Number.isNaN(start.valueOf()) ||
+      Number.isNaN(end.valueOf()) ||
+      end <= start
+    ) {
       return { duration: 0, total: 0 };
     }
+
     const milliseconds = end.getTime() - start.getTime();
     const duration = Math.ceil(milliseconds / (1000 * 60 * 60 * 24));
-    const total = duration * PRICE_PER_DAY;
+
+    // ✅ LẤY GIÁ TỪ MODEL
+    const pricePerDay = selectedVehicle.model?.basePrice || 0;
+
+    const total = duration * pricePerDay;
+
     return { duration, total };
-  }, [formData.startTime, formData.endTime]);
+  }, [formData.startTime, formData.endTime, selectedVehicle]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -344,7 +370,7 @@ const CreateBookingPage = () => {
                   <div className="booking-create__summary-price">
                     <strong>{rentalSummary.total.toLocaleString('vi-VN')} ₫</strong>
                     {rentalSummary.duration > 0 && (
-                      <span>{rentalSummary.duration} ngày x {PRICE_PER_DAY.toLocaleString('vi-VN')} ₫</span>
+                      <span>{rentalSummary.duration} ngày x {(selectedVehicle?.model?.basePrice || 0).toLocaleString('vi-VN')} ₫</span>
                     )}
                   </div>
                   {rentalSummary.duration === 0 && (

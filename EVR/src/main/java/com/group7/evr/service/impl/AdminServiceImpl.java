@@ -42,6 +42,7 @@ public class AdminServiceImpl implements AdminService {
         summary.put("maintenanceVehicles", maintenanceVehicles.size());
         return summary;
     }
+
     @Override
     public Vehicle dispatchVehicle(Integer fromStationId, Integer toStationId, Integer vehicleId) {
         Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow();
@@ -58,6 +59,7 @@ public class AdminServiceImpl implements AdminService {
         userService.logAudit(null, "Dispatched vehicle " + vehicleId + " from station " + fromStationId + " to " + toStationId);
         return updatedVehicle;
     }
+
     @Override
     public List<Complaint> getComplaintsByStatus(String status) {
         if (status == null || status.trim().isEmpty()) {
