@@ -32,7 +32,7 @@ const FALLBACK_MODELS = [
   {
     name: 'VF 3',
     detail: 'Xe điện mini đô thị, nhỏ gọn, dễ lái, phù hợp di chuyển ngắn trong thành phố.',
-    priceLabel: 'Từ 199K/giờ',
+    priceLabel: 'Từ 299K/giờ',
     image: '/images/models/urban-compact.svg',
   },
   {
@@ -68,13 +68,13 @@ const FALLBACK_MODELS = [
   {
     name: 'VF e34',
     detail: 'SUV điện cỡ nhỏ, mẫu xe điện phổ biến, phù hợp cá nhân và chạy dịch vụ.',
-    priceLabel: 'Từ 599K/ngày',
+    priceLabel: 'Từ 450K/ngày',
     image: '/images/models/compact-suv.svg',
   },
   {
     name: 'Limo Green',
     detail: 'MPV điện 7 chỗ, không gian rộng, tối ưu cho gia đình lớn hoặc dịch vụ vận chuyển.',
-    priceLabel: 'Từ 799K/ngày',
+    priceLabel: 'Từ 1299K/ngày',
     image: '/images/models/mpv.svg',
   },
 ];
