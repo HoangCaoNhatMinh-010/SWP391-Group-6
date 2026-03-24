@@ -104,7 +104,7 @@ const CreateBookingPage = () => {
       try {
         const stationsData = await stationService.getStations();
         setStations(Array.isArray(stationsData) ? stationsData : []);
-      } catch (err) {
+      } catch {
         setError('Không thể tải danh sách trạm.');
       } finally {
         setInitialLoading(false);
@@ -140,7 +140,7 @@ const CreateBookingPage = () => {
           }
           return prev;
         });
-      } catch (err) {
+      } catch {
         setError('Không thể tải danh sách xe có sẵn.');
         setVehicles([]);
         setFormData((prev) => ({ ...prev, vehicleId: '' }));
@@ -333,7 +333,7 @@ const CreateBookingPage = () => {
                   <FormInput
                     label="Thời gian trả xe"
                     name="endTime"
-                    type="datetime-local"
+                    type="date"
                     value={formData.endTime}
                     onChange={handleChange}
                     required
