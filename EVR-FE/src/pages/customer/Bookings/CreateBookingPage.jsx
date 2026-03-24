@@ -13,7 +13,7 @@ import SuccessMessage from '@components/common/SuccessMessage';
 
 import './CreateBookingPage.css';
 
-const PRICE_PER_DAY = 250000;
+//const PRICE_PER_DAY = 250000; 
 
 const normalizeModelImage = (rawPath) => {
   if (!rawPath) {
@@ -58,16 +58,16 @@ const fallbackModelImage = (vehicle) => {
   const normalized = modelCode.toLowerCase().replace(/\s+/g, '');
 
   if (normalized.includes('urban') || normalized.includes('compact')) {
-    return '/images/models/urban-compact.svg';
+    return '../images/vehicles/urban-compact.svg';
   }
   if (normalized.includes('executive') || normalized.includes('sedan')) {
-    return '/images/models/executive-sedan.svg';
+    return '../images/vehicles/executive-sedan.svg';
   }
   if (normalized.includes('adventure') || normalized.includes('suv')) {
-    return '/images/models/adventure-suv.svg';
+    return '../images/vehicles/adventure-suv.svg';
   }
 
-  return '/images/models/default-vehicle.svg';
+  return '../images/models/default-vehicle.svg';
 };
 
 const getModelImage = (vehicle) =>
@@ -104,7 +104,7 @@ const CreateBookingPage = () => {
       try {
         const stationsData = await stationService.getStations();
         setStations(Array.isArray(stationsData) ? stationsData : []);
-      } catch (err) {
+      } catch {
         setError('Không thể tải danh sách trạm.');
       } finally {
         setInitialLoading(false);
@@ -140,7 +140,7 @@ const CreateBookingPage = () => {
           }
           return prev;
         });
-      } catch (err) {
+      } catch {
         setError('Không thể tải danh sách xe có sẵn.');
         setVehicles([]);
         setFormData((prev) => ({ ...prev, vehicleId: '' }));
@@ -157,20 +157,46 @@ const CreateBookingPage = () => {
     [vehicles, formData.vehicleId]
   );
 
+  // const rentalSummary = useMemo(() => {
+  //   if (!formData.startTime || !formData.endTime) {
+  //     return { duration: 0, total: 0 };
+  //   }
+  //   const start = new Date(formData.startTime);
+  //   const end = new Date(formData.endTime);
+  //   if (Number.isNaN(start.valueOf()) || Number.isNaN(end.valueOf()) || end <= start) {
+  //     return { duration: 0, total: 0 };
+  //   }
+  //   const milliseconds = end.getTime() - start.getTime();
+  //   const duration = Math.ceil(milliseconds / (1000 * 60 * 60 * 24));
+  //   const total = duration * PRICE_PER_DAY;
+  //   return { duration, total };
+  // }, [formData.startTime, formData.endTime]);
   const rentalSummary = useMemo(() => {
-    if (!formData.startTime || !formData.endTime) {
+    if (!formData.startTime || !formData.endTime || !selectedVehicle) {
       return { duration: 0, total: 0 };
     }
+
     const start = new Date(formData.startTime);
     const end = new Date(formData.endTime);
-    if (Number.isNaN(start.valueOf()) || Number.isNaN(end.valueOf()) || end <= start) {
+
+    if (
+      Number.isNaN(start.valueOf()) ||
+      Number.isNaN(end.valueOf()) ||
+      end <= start
+    ) {
       return { duration: 0, total: 0 };
     }
+
     const milliseconds = end.getTime() - start.getTime();
     const duration = Math.ceil(milliseconds / (1000 * 60 * 60 * 24));
-    const total = duration * PRICE_PER_DAY;
+
+    // ✅ LẤY GIÁ TỪ MODEL
+    const pricePerDay = selectedVehicle.model?.basePrice || 0;
+
+    const total = duration * pricePerDay;
+
     return { duration, total };
-  }, [formData.startTime, formData.endTime]);
+  }, [formData.startTime, formData.endTime, selectedVehicle]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -292,7 +318,6 @@ const CreateBookingPage = () => {
                     label="Thời gian nhận xe"
                     name="startTime"
                     type="date"
-                    type="datetime-local"
                     value={formData.startTime}
                     onChange={handleChange}
                     required
@@ -308,7 +333,7 @@ const CreateBookingPage = () => {
                   <FormInput
                     label="Thời gian trả xe"
                     name="endTime"
-                    type="datetime-local"
+                    type="date"
                     value={formData.endTime}
                     onChange={handleChange}
                     required
@@ -345,7 +370,7 @@ const CreateBookingPage = () => {
                   <div className="booking-create__summary-price">
                     <strong>{rentalSummary.total.toLocaleString('vi-VN')} ₫</strong>
                     {rentalSummary.duration > 0 && (
-                      <span>{rentalSummary.duration} ngày x {PRICE_PER_DAY.toLocaleString('vi-VN')} ₫</span>
+                      <span>{rentalSummary.duration} ngày x {(selectedVehicle?.model?.basePrice || 0).toLocaleString('vi-VN')} ₫</span>
                     )}
                   </div>
                   {rentalSummary.duration === 0 && (

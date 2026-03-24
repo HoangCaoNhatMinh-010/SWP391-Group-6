@@ -18,6 +18,7 @@ const ReturnInspectionPage = () => {
     batteryLevel: '',
     damageDescription: '',
   });
+  // eslint-disable-next-line no-unused-vars
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);

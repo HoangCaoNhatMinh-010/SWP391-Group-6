@@ -67,7 +67,7 @@ const CreateMaintenancePage = () => {
             setSelectedVehicle(vehicle);
           }
         }
-      } catch (err) {
+      } catch {
         setError('Không thể tải danh sách xe.');
       } finally {
         setLoadingData(false);

@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import Footer from '../Footer';
 
 const DashboardLayout = ({ children }) => {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-
   return (
     <div className="d-flex flex-column min-vh-100">
       <Header />

@@ -67,7 +67,7 @@ const CreateStationPage = () => {
       } else {
         setError('Không tìm thấy tọa độ cho địa chỉ này. Vui lòng nhập thủ công.');
       }
-    } catch (err) {
+    } catch {
       setError('Không thể lấy tọa độ từ địa chỉ. Vui lòng thử lại hoặc nhập thủ công.');
     } finally {
       setGeocodingLoading(false);
@@ -95,7 +95,7 @@ const CreateStationPage = () => {
         setSuccess('Đã lấy vị trí hiện tại thành công!');
         setGeocodingLoading(false);
       },
-      (err) => {
+      () => {
         setError('Không thể lấy vị trí. Vui lòng cho phép truy cập vị trí hoặc nhập thủ công.');
         setGeocodingLoading(false);
       }

@@ -58,6 +58,7 @@ public class AdminServiceImpl implements AdminService {
         userService.logAudit(null, "Dispatched vehicle " + vehicleId + " from station " + fromStationId + " to " + toStationId);
         return updatedVehicle;
     }
+
     @Override
     public List<Complaint> getComplaintsByStatus(String status) {
         if (status == null || status.trim().isEmpty()) {
@@ -208,7 +209,12 @@ public class AdminServiceImpl implements AdminService {
 
         Map<String, Long> hourlyDistribution = bookings.stream()
                 .collect(java.util.stream.Collectors.groupingBy(
-                        booking -> String.valueOf(booking.getStartTime().getHours()),
+                    // booking -> String.valueOf(booking.getStartTime().getHours()),
+                        booking -> {
+                            java.util.Calendar cal = java.util.Calendar.getInstance();
+                            cal.setTime(booking.getStartTime());
+                            return String.format("%02d:00", cal.get(java.util.Calendar.HOUR_OF_DAY));
+                        },
                         java.util.stream.Collectors.counting()
                 ));
 

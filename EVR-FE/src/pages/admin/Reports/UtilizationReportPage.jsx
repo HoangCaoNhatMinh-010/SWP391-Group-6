@@ -19,14 +19,14 @@ const UtilizationReportPage = () => {
       try {
         const data = await stationService.getStations();
         setStations(Array.isArray(data) ? data : []);
-      } catch (err) {
+      } catch {
         setError('Không thể tải danh sách trạm.');
       }
 
       try {
         const utilization = await adminService.getUtilizationReport(null);
         setReport(utilization || null);
-      } catch (err) {
+      } catch {
         setError((prev) => prev ?? 'Không thể tải báo cáo hiệu suất sử dụng.');
         setReport(null);
       } finally {

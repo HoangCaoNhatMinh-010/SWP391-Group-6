@@ -27,21 +27,19 @@ const AdminDashboardPage = () => {
     fetchSummary();
   }, []);
 
-  const defaultSummary = {
-    totalVehicles: 0,
-    availableVehicles: 0,
-    vehiclesInUse: 0,
-    maintenanceVehicles: 0,
-    totalStations: 0,
-    totalUsers: 0,
-    totalBookings: 0,
-    totalRevenue: 0,
-  };
-
-  const summary = { ...defaultSummary, ...(fleetSummary || {}) };
-
-  const metricCards = useMemo(
-    () => [
+  const metricCards = useMemo(() => {
+    const defaultSummary = {
+      totalVehicles: 0,
+      availableVehicles: 0,
+      vehiclesInUse: 0,
+      maintenanceVehicles: 0,
+      totalStations: 0,
+      totalUsers: 0,
+      totalBookings: 0,
+      totalRevenue: 0,
+    };
+    const summary = { ...defaultSummary, ...(fleetSummary || {}) };
+    return [
       {
         title: 'Tổng số xe',
         value: summary.totalVehicles,
@@ -50,29 +48,14 @@ const AdminDashboardPage = () => {
         variant: 'primary',
       },
       {
-        title: 'Trạng thái hoạt động',
-        value: `${summary.vehiclesInUse || 0}`,
-        detail: 'Xe đang được sử dụng',
-        icon: '⚙️',
-        variant: 'teal',
-      },
-      {
         title: 'Đang bảo trì',
         value: summary.maintenanceVehicles || 0,
         detail: 'Xe chờ bảo trì',
         icon: '🛠️',
         variant: 'amber',
       },
-      {
-        title: 'Tổng booking',
-        value: summary.totalBookings,
-        detail: 'Trong 30 ngày gần nhất',
-        icon: '📅',
-        variant: 'purple',
-      },
-    ],
-    [summary]
-  );
+    ];
+  }, [fleetSummary]);
 
   const quickLinks = [
     {
@@ -88,13 +71,6 @@ const AdminDashboardPage = () => {
       icon: '🚘',
       to: '/admin/vehicles',
       variant: 'link-green',
-    },
-    {
-      title: 'Nhân sự & lịch làm việc',
-      description: 'Phân bổ ca, theo dõi hiệu suất nhân viên theo trạm.',
-      icon: '👔',
-      to: '/admin/staff',
-      variant: 'link-orange',
     },
     {
       title: 'Khách hàng & phản hồi',
@@ -115,20 +91,6 @@ const AdminDashboardPage = () => {
             <p>
               Theo dõi đội xe, trạm và khách hàng theo thời gian thực. Chủ động ra quyết định dựa trên dữ liệu tổng hợp.
             </p>
-          </div>
-          <div className="admin-dashboard__hero-stats">
-            <div>
-              <span>Trạm hoạt động</span>
-              <strong>{summary.totalStations}</strong>
-            </div>
-            <div>
-              <span>Khách hàng</span>
-              <strong>{summary.totalUsers}</strong>
-            </div>
-            <div>
-              <span>Doanh thu (VNĐ)</span>
-              <strong>{summary.totalRevenue?.toLocaleString('vi-VN') || '0'}</strong>
-            </div>
           </div>
         </section>
 
@@ -183,22 +145,6 @@ const AdminDashboardPage = () => {
                   </p>
                   <Link to="/admin/reports/revenue" className="btn btn-outline-light">
                     Xem báo cáo doanh thu
-                  </Link>
-                </div>
-                <div className="admin-insight-card">
-                  <h3>Hiệu suất sử dụng xe</h3>
-                  <p>
-                    So sánh tỉ lệ thuê theo khung giờ, nhận diện thời điểm cao điểm để lên kế hoạch bổ sung xe.
-                  </p>
-                  <Link to="/admin/reports/utilization" className="btn btn-outline-light">
-                    Phân tích hiệu suất
-                  </Link>
-                </div>
-                <div className="admin-insight-card">
-                  <h3>Dự báo nhu cầu</h3>
-                  <p>Tham khảo dự báo để chuẩn bị nguồn lực và chiến dịch khuyến mại phù hợp.</p>
-                  <Link to="/admin/reports/forecast" className="btn btn-outline-light">
-                    Xem dự báo nhu cầu
                   </Link>
                 </div>
               </div>
