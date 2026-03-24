@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AdminLayout from '@components/layout/AdminLayout/AdminLayout';
 import { adminService } from '@services/admin.service';
 import { staffService } from '@services/staff.service';
@@ -10,6 +11,7 @@ import SuccessMessage from '@components/common/SuccessMessage';
 import './StaffSchedulePage.css';
 
 const CreateStaffSchedulePage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     staffId: '',
     stationId: '',
@@ -33,7 +35,7 @@ const CreateStaffSchedulePage = () => {
         ]);
         setStaffList(staffData);
         setStations(stationsData);
-      } catch (err) {
+      } catch {
         setError('Failed to load data');
       } finally {
         setLoadingData(false);
@@ -67,8 +69,8 @@ const CreateStaffSchedulePage = () => {
       setTimeout(() => {
         navigate('/admin/staff');
       }, 1500);
-    } catch (err) {
-      setError(err.response?.data?.message || 'Failed to create staff schedule');
+    } catch (_err) {
+      setError(_err.response?.data?.message || 'Failed to create staff schedule');
     } finally {
       setLoading(false);
     }

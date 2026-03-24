@@ -19,14 +19,14 @@ const PeakHoursAnalysisPage = () => {
       try {
         const data = await stationService.getStations();
         setStations(Array.isArray(data) ? data : []);
-      } catch (err) {
+      } catch {
         setError('Không thể tải danh sách trạm.');
       }
 
       try {
         const peakData = await adminService.getPeakHoursAnalysis(null);
         setAnalysis(peakData || null);
-      } catch (err) {
+      } catch {
         setError((prev) => prev ?? 'Không thể tải báo cáo khung giờ cao điểm.');
         setAnalysis(null);
       } finally {

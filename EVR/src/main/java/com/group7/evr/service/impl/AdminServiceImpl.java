@@ -210,7 +210,12 @@ public class AdminServiceImpl implements AdminService {
 
         Map<String, Long> hourlyDistribution = bookings.stream()
                 .collect(java.util.stream.Collectors.groupingBy(
-                        booking -> String.valueOf(booking.getStartTime().getHours()),
+                    // booking -> String.valueOf(booking.getStartTime().getHours()),
+                        booking -> {
+                            java.util.Calendar cal = java.util.Calendar.getInstance();
+                            cal.setTime(booking.getStartTime());
+                            return String.format("%02d:00", cal.get(java.util.Calendar.HOUR_OF_DAY));
+                        },
                         java.util.stream.Collectors.counting()
                 ));
 

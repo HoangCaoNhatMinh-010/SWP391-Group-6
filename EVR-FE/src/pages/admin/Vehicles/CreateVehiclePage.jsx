@@ -37,7 +37,7 @@ const CreateVehiclePage = () => {
       try {
         const data = await stationService.getStations();
         setStations(Array.isArray(data) ? data : []);
-      } catch (err) {
+      } catch {
         setError('Không thể tải danh sách trạm.');
       } finally {
         setLoadingData(false);

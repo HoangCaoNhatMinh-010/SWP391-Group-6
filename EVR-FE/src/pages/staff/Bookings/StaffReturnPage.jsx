@@ -113,12 +113,6 @@ const StaffReturnPage = () => {
     }
   };
 
-  const handleCreateMaintenance = () => {
-    if (booking?.vehicle?.vehicleId) {
-      navigate(`/staff/maintenance/create?vehicleId=${booking.vehicle.vehicleId}&batteryLevel=${formData.batteryLevel}`);
-    }
-  };
-
   return (
     <StaffLayout>
       <div className="staff-return">

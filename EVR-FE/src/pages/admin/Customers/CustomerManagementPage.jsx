@@ -18,20 +18,6 @@ const riskBadge = (flag) => {
   );
 };
 
-const statusBadge = (status) => {
-  const normalized = (status || '').toUpperCase();
-  switch (normalized) {
-    case 'ACTIVE':
-      return <span className="customer-badge customer-badge--positive">Active</span>;
-    case 'SUSPENDED':
-      return <span className="customer-badge customer-badge--warning">Suspended</span>;
-    case 'DELETED':
-      return <span className="customer-badge customer-badge--neutral">Deleted</span>;
-    default:
-      return <span className="customer-badge customer-badge--neutral">{status || 'Unknown'}</span>;
-  }
-};
-
 const CustomerManagementPage = () => {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);

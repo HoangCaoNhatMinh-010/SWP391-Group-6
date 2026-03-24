@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@contexts/AuthContext';
 import { feedbackService } from '@services/feedback.service';
 import { complaintService } from '@services/complaint.service';
@@ -44,9 +44,9 @@ const FeedbackComplaintPage = () => {
       loadUserFeedbacks();
       loadUserComplaints();
     }
-  }, [user?.userId]);
+  }, [user?.userId, loadBookings, loadUserFeedbacks, loadUserComplaints]);
 
-  const loadBookings = async () => {
+  const loadBookings = useCallback(async () => {
     if (!user?.userId) return;
     setLoading(true);
     setError(null);
@@ -82,9 +82,9 @@ const FeedbackComplaintPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [user?.userId]);
 
-  const loadUserFeedbacks = async () => {
+  const loadUserFeedbacks = useCallback(async () => {
     if (!user?.userId) return;
     try {
       const data = await feedbackService.getUserFeedback(user.userId);
@@ -92,9 +92,9 @@ const FeedbackComplaintPage = () => {
     } catch (err) {
       console.error('Error loading feedbacks:', err);
     }
-  };
+  }, [user?.userId]);
 
-  const loadUserComplaints = async () => {
+  const loadUserComplaints = useCallback(async () => {
     if (!user?.userId) return;
     try {
       const data = await complaintService.getUserComplaints(user.userId);
@@ -102,7 +102,7 @@ const FeedbackComplaintPage = () => {
     } catch (err) {
       console.error('Error loading complaints:', err);
     }
-  };
+  }, [user?.userId]);
 
   const handleFeedbackSubmit = async (e) => {
     e.preventDefault();

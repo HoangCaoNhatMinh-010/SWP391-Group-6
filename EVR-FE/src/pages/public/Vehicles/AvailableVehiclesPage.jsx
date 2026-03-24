@@ -8,12 +8,12 @@ import ErrorMessage from '@components/common/ErrorMessage';
 import './AvailableVehiclesPage.css';
 
 const MODEL_IMAGE_MAP = {
-  urban: '/images/models/urban-compact.svg',
-  executive: '/images/models/executive-sedan.svg',
-  adventure: '/images/models/adventure-suv.svg',
-  suv: '/images/models/adventure-suv.svg',
-  sedan: '/images/models/executive-sedan.svg',
-  compact: '/images/models/urban-compact.svg',
+  urban: '../images/vehicles/urban-compact.svg',
+  executive: '../images/vehicles/executive-sedan.svg',
+  adventure: '../images/vehicles/adventure-suv.svg',
+  suv: '../images/vehicles/adventure-suv.svg',
+  sedan: '../images/vehicles/executive-sedan.svg',
+  compact: '../images/vehicles/urban-compact.svg',
 };
 
 const NORMALIZE_MODEL_IMAGE = (rawPath) => {
@@ -58,7 +58,7 @@ const getModelImage = (vehicle) => {
     return MODEL_IMAGE_MAP[matchedKey];
   }
 
-  return '/images/models/default-vehicle.svg';
+  return '../images/models/default-vehicle.svg';
 };
 
 const sortOptions = [
@@ -290,7 +290,7 @@ const AvailableVehiclesPage = () => {
               </div>
             ) : (
               <div className="vehicles-grid">
-                {filteredVehicles.map((vehicle, index) => {
+                {filteredVehicles.map((vehicle) => {
                   const batteryLevel = vehicle.batteryLevel ?? 0;
                   const batteryTone = getBatteryTone(batteryLevel);
                   const image = getModelImage(vehicle);

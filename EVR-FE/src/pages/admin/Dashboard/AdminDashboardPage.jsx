@@ -27,21 +27,19 @@ const AdminDashboardPage = () => {
     fetchSummary();
   }, []);
 
-  const defaultSummary = {
-    totalVehicles: 0,
-    availableVehicles: 0,
-    vehiclesInUse: 0,
-    maintenanceVehicles: 0,
-    totalStations: 0,
-    totalUsers: 0,
-    totalBookings: 0,
-    totalRevenue: 0,
-  };
-
-  const summary = { ...defaultSummary, ...(fleetSummary || {}) };
-
-  const metricCards = useMemo(
-    () => [
+  const metricCards = useMemo(() => {
+    const defaultSummary = {
+      totalVehicles: 0,
+      availableVehicles: 0,
+      vehiclesInUse: 0,
+      maintenanceVehicles: 0,
+      totalStations: 0,
+      totalUsers: 0,
+      totalBookings: 0,
+      totalRevenue: 0,
+    };
+    const summary = { ...defaultSummary, ...(fleetSummary || {}) };
+    return [
       {
         title: 'Tổng số xe',
         value: summary.totalVehicles,
@@ -56,9 +54,8 @@ const AdminDashboardPage = () => {
         icon: '🛠️',
         variant: 'amber',
       },
-    ],
-    [summary]
-  );
+    ];
+  }, [fleetSummary]);
 
   const quickLinks = [
     {
