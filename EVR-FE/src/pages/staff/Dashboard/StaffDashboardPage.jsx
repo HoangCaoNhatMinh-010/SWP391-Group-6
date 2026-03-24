@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '@contexts/AuthContext';
 import StaffLayout from '@components/layout/StaffLayout/StaffLayout';
-
 import './StaffDashboardPage.css';
 
 const quickLinks = [

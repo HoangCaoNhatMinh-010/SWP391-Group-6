@@ -42,7 +42,6 @@ public class AdminServiceImpl implements AdminService {
         summary.put("maintenanceVehicles", maintenanceVehicles.size());
         return summary;
     }
-
     @Override
     public Vehicle dispatchVehicle(Integer fromStationId, Integer toStationId, Integer vehicleId) {
         Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow();
