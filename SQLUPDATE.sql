@@ -11,7 +11,6 @@ VALUES
   (N'Chi Nhánh Sơn Trà', 
    N'789 Ngô Quyền, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng', 
    '0236345678', 40, 35, '06:30-22:30', 16.0793, 108.2305),
-
   (N'Chi Nhánh Liên Chiểu', 
    N'321 Nguyễn Lương Bằng, Phường Hòa Khánh Bắc, Quận Liên Chiểu, Đà Nẵng', 
    '0236987654', 35, 28, '07:00-22:00', 16.0757, 108.1506);

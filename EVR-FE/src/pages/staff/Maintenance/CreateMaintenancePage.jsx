@@ -59,7 +59,7 @@ const CreateMaintenancePage = () => {
       try {
         const data = await vehicleService.getVehicles();
         setVehicles(data);
-        
+
         // If vehicleId is provided, find and set the selected vehicle
         if (vehicleIdParam) {
           const vehicle = data.find(v => v.vehicleId === Number(vehicleIdParam));
@@ -67,7 +67,7 @@ const CreateMaintenancePage = () => {
             setSelectedVehicle(vehicle);
           }
         }
-      } catch (err) {
+      } catch {
         setError('Không thể tải danh sách xe.');
       } finally {
         setLoadingData(false);
@@ -82,7 +82,7 @@ const CreateMaintenancePage = () => {
     setFormData({ ...formData, [name]: value });
     setError(null);
     setSuccess(null);
-    
+
     // Update selected vehicle when vehicleId changes
     if (name === 'vehicleId') {
       const vehicle = vehicles.find(v => v.vehicleId === Number(value));

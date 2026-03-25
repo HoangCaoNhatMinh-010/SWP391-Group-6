@@ -215,6 +215,18 @@ const VehicleSearchPage = () => {
                         <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>3</td>
                         <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF 7</td>
                       </tr>
+                      <tr>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>4</td>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF 8</td>
+                      </tr>
+                      <tr>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>5</td>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF 9</td>
+                      </tr>
+                      <tr>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>6</td>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF e34</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>

@@ -290,7 +290,7 @@ const BookingDetailsPage = () => {
                 </div>
                 <div className="booking-details__info-item">
                   <span>Ngày tạo</span>
-                  <strong>{formatDate(booking.createdAt || booking.bookingDate)}</strong>
+                  <strong>{formatDate(booking.startTime || booking.bookingDate)}</strong>
                 </div>
               </div>
             </div>
@@ -298,11 +298,6 @@ const BookingDetailsPage = () => {
             <div className="booking-details__sidebar-card">
               <h3>Hành động</h3>
               <div className="booking-details__actions">
-                {booking.bookingStatus === 'COMPLETED' && !booking.settled && (
-                  <Link to={`/bookings/${id}/settlement`} className="btn btn-primary w-100">
-                    Thanh toán cuối cùng
-                  </Link>
-                )}
                 {booking.bookingStatus === 'PENDING' && (
                   <Link to={`/bookings/${id}/modify`} className="btn btn-outline-primary w-100">
                     Chỉnh sửa booking
