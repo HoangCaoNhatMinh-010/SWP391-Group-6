@@ -112,14 +112,6 @@ const StationsListPage = () => {
                 <span>Trạm hoạt động</span>
                 <strong>{stationMetrics.totalStations}</strong>
               </div>
-              <div>
-                <span>Slots trống</span>
-                <strong>{stationMetrics.totalAvailableSlots}</strong>
-              </div>
-              <div>
-                <span>Tổng sức chứa</span>
-                <strong>{stationMetrics.totalCapacity}</strong>
-              </div>
             </div>
           </div>
         </section>
@@ -158,10 +150,6 @@ const StationsListPage = () => {
                               {tone === 'high' ? 'Sẵn sàng' : tone === 'medium' ? 'Nên đặt trước' : 'Sắp full'}
                             </span>
                           </div>
-                          <div className="station-card__metric">
-                            <strong>{station.availableSlots ?? 0}</strong>
-                            <span>Slots</span>
-                          </div>
                         </div>
 
                         <div className="station-card__body">
@@ -184,9 +172,6 @@ const StationsListPage = () => {
                             <div className={`station-capacity__bar station-capacity__bar--${tone}`}>
                               <div style={{ width: `${occupancy}%` }} />
                             </div>
-                            <span>
-                              {station.availableSlots ?? 0} / {station.totalSlots ?? 0} chỗ trống
-                            </span>
                           </div>
 
                           <Link

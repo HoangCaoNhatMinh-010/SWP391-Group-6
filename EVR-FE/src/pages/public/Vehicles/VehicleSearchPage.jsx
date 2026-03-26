@@ -13,71 +13,13 @@ const STATUS_METADATA = {
   MAINTENANCE: { label: 'Bảo trì', badge: 'status--maintenance' },
 };
 
-// const MODEL_IMAGE_MAP = {
-//   urban: '../images/vehicles/urban-compact.svg',
-//   executive: '../images/vehicles/executive-sedan.svg',
-//   adventure: '../images/vehicles/adventure-suv.svg',
-//   suv: '../images/vehicles/adventure-suv.svg',
-//   sedan: '../images/vehicles/executive-sedan.svg',
-//   compact: '../images/vehicles/urban-compact.svg',
-// };
+const getVehicleImage = (vehicle) => {
+  if (vehicle?.plateNumber) {
+    return `/images/vehicles/${vehicle.plateNumber}.jpg`;
+  }
 
-const MODEL_IMAGE_MAP = {
-  vf5: '../images/model/vf5.jpg',
-  vf6: '../images/model/vf6.jpg',
-  vf7: '../images/model/vf7.jpg',
+  return '/images/models/default-vehicle.svg';
 };
-
-const normalizeModelImage = (rawPath) => {
-  if (!rawPath) {
-    return null;
-  }
-
-  let normalized = rawPath.trim();
-  if (!normalized) {
-    return null;
-  }
-
-  if (/^data:image\//.test(normalized)) {
-    return normalized;
-  }
-
-  normalized = normalized.replace(/\\/g, '/');
-
-  if (normalized.startsWith('/public/')) {
-    normalized = normalized.replace('/public', '');
-  } else if (normalized.startsWith('public/')) {
-    normalized = normalized.replace('public', '');
-  }
-  if (!normalized.startsWith('/')) {
-    normalized = `/${normalized}`;
-  }
-  if (!/\.[a-z]{2,4}$/i.test(normalized)) {
-    normalized = `${normalized}.jpg`;
-  }
-  return normalized;
-};
-
-const getModelImage = (vehicle) => {
-  const explicit = normalizeModelImage(vehicle.model?.imageUrl);
-  if (explicit) {
-    return explicit;
-  }
-
-  const modelCode =
-    vehicle.model?.modelName ||
-    vehicle.model?.vehicleType ||
-    vehicle.model?.brand ||
-    '';
-
-  const normalized = modelCode.toLowerCase().replace(/\s+/g, '');
-  const matchedKey = Object.keys(MODEL_IMAGE_MAP).find((key) =>
-    normalized.includes(key)
-  );
-
-  return matchedKey ? MODEL_IMAGE_MAP[matchedKey] : '../images/models/default-vehicle.svg';
-};
-
 const VehicleSearchPage = () => {
   const [filters, setFilters] = useState({ modelId: '', minBattery: '' });
   const [vehicles, setVehicles] = useState([]);
@@ -220,6 +162,18 @@ const VehicleSearchPage = () => {
                         <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>3</td>
                         <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF 7</td>
                       </tr>
+                      <tr>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>4</td>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF 8</td>
+                      </tr>
+                      <tr>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>5</td>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF 9</td>
+                      </tr>
+                      <tr>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>6</td>
+                        <td style={{ borderBottom: '1px solid #eee', padding: '0.5rem' }}>VF e34</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -244,9 +198,12 @@ const VehicleSearchPage = () => {
                       <article key={vehicle.vehicleId} className="vehicle-search-card">
                         <div className="vehicle-search-card__image">
                           <img
-                            src={getModelImage(vehicle)}
+                            src={getVehicleImage(vehicle)}
                             alt={vehicle.model?.modelName || 'EVR Vehicle'}
                             loading="lazy"
+                            onError={(e) => {
+                              e.target.src = '/images/models/default-vehicle.svg';
+                            }}
                           />
                         </div>
 
