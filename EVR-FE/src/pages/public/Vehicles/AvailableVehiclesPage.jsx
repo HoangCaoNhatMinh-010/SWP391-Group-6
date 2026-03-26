@@ -36,12 +36,12 @@ const NORMALIZE_MODEL_IMAGE = (rawPath) => {
   return normalized;
 };
 
-const getModelImage = (vehicle) => {
-  const explicitImage = NORMALIZE_MODEL_IMAGE(vehicle.model?.imageUrl);
-  if (explicitImage) {
-    return explicitImage;
+const getVehicleImage = (vehicle) => {
+  if (vehicle?.plateNumber) {
+    return `/images/vehicles/${vehicle.plateNumber}.jpg`;
   }
 
+  // fallback nếu không có biển số
   const modelCode =
     vehicle.model?.modelName ||
     vehicle.model?.vehicleType ||
@@ -293,8 +293,7 @@ const AvailableVehiclesPage = () => {
                 {filteredVehicles.map((vehicle, index) => {
                   const batteryLevel = vehicle.batteryLevel ?? 0;
                   const batteryTone = getBatteryTone(batteryLevel);
-                  const image = getModelImage(vehicle);
-
+                  const image = getVehicleImage(vehicle);
                   return (
                     <article key={vehicle.vehicleId} className="vehicle-card">
                       <div className="vehicle-card__image">

@@ -13,65 +13,13 @@ const STATUS_METADATA = {
   RENTED: { label: 'Đang thuê', badge: 'status--rented' },
   MAINTENANCE: { label: 'Bảo trì', badge: 'status--maintenance' },
 };
-
-const normalizeModelImage = (rawPath) => {
-  if (!rawPath) {
-    return null;
-  }
-
-  let normalized = rawPath.trim();
-  if (!normalized) {
-    return null;
-  }
-
-  if (/^data:image\//.test(normalized)) {
-    return normalized;
-  }
-
-  normalized = normalized.replace(/\\/g, '/');
-
-  if (normalized.startsWith('/public/')) {
-    normalized = normalized.replace('/public', '');
-  } else if (normalized.startsWith('public/')) {
-    normalized = normalized.replace('public', '');
-  }
-
-  if (!normalized.startsWith('/')) {
-    normalized = `/${normalized}`;
-  }
-
-  if (!/\.[a-z]{2,4}$/i.test(normalized)) {
-    normalized = `${normalized}.jpg`;
-  }
-
-  return normalized;
-};
-
-const fallbackModelImage = (vehicle) => {
-  const modelCode =
-    vehicle.model?.modelName ||
-    vehicle.model?.vehicleType ||
-    vehicle.model?.brand ||
-    '';
-
-  const normalized = modelCode.toLowerCase().replace(/\s+/g, '');
-
-  if (normalized.includes('urban') || normalized.includes('compact')) {
-    return '/images/models/urban-compact.svg';
-  }
-  if (normalized.includes('executive') || normalized.includes('sedan')) {
-    return '/images/models/executive-sedan.svg';
-  }
-  if (normalized.includes('adventure') || normalized.includes('suv')) {
-    return '/images/models/adventure-suv.svg';
+const getVehicleImage = (vehicle) => {
+  if (vehicle?.plateNumber) {
+    return `/images/vehicles/${vehicle.plateNumber}.jpg`;
   }
 
   return '/images/models/default-vehicle.svg';
 };
-
-const getModelImage = (vehicle) =>
-  normalizeModelImage(vehicle.model?.imageUrl) || fallbackModelImage(vehicle);
-
 const VehicleDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -160,7 +108,13 @@ const VehicleDetailsPage = () => {
               </div>
             </div>
             <div className="vehicle-details-hero__image">
-              <img src={getModelImage(vehicle)} alt={vehicle.model?.modelName || 'EVR Vehicle'} />
+              <img
+                src={getVehicleImage(vehicle)}
+                alt={vehicle.model?.modelName || 'EVR Vehicle'}
+                onError={(e) => {
+                  e.target.src = '/images/models/default-vehicle.svg';
+                }}
+              />
             </div>
           </div>
         </section>

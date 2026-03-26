@@ -13,65 +13,13 @@ const STATUS_METADATA = {
   MAINTENANCE: { label: 'Bảo trì', badge: 'status--maintenance' },
 };
 
-const MODEL_IMAGE_MAP = {
-  urban: '/images/models/urban-compact.svg',
-  executive: '/images/models/executive-sedan.svg',
-  adventure: '/images/models/adventure-suv.svg',
-  suv: '/images/models/adventure-suv.svg',
-  sedan: '/images/models/executive-sedan.svg',
-  compact: '/images/models/urban-compact.svg',
+const getVehicleImage = (vehicle) => {
+  if (vehicle?.plateNumber) {
+    return `/images/vehicles/${vehicle.plateNumber}.jpg`;
+  }
+
+  return '/images/models/default-vehicle.svg';
 };
-
-const normalizeModelImage = (rawPath) => {
-  if (!rawPath) {
-    return null;
-  }
-
-  let normalized = rawPath.trim();
-  if (!normalized) {
-    return null;
-  }
-
-  if (/^data:image\//.test(normalized)) {
-    return normalized;
-  }
-
-  normalized = normalized.replace(/\\/g, '/');
-
-  if (normalized.startsWith('/public/')) {
-    normalized = normalized.replace('/public', '');
-  } else if (normalized.startsWith('public/')) {
-    normalized = normalized.replace('public', '');
-  }
-  if (!normalized.startsWith('/')) {
-    normalized = `/${normalized}`;
-  }
-  if (!/\.[a-z]{2,4}$/i.test(normalized)) {
-    normalized = `${normalized}.jpg`;
-  }
-  return normalized;
-};
-
-const getModelImage = (vehicle) => {
-  const explicit = normalizeModelImage(vehicle.model?.imageUrl);
-  if (explicit) {
-    return explicit;
-  }
-
-  const modelCode =
-    vehicle.model?.modelName ||
-    vehicle.model?.vehicleType ||
-    vehicle.model?.brand ||
-    '';
-
-  const normalized = modelCode.toLowerCase().replace(/\s+/g, '');
-  const matchedKey = Object.keys(MODEL_IMAGE_MAP).find((key) =>
-    normalized.includes(key)
-  );
-
-  return matchedKey ? MODEL_IMAGE_MAP[matchedKey] : '/images/models/default-vehicle.svg';
-};
-
 const VehicleSearchPage = () => {
   const [filters, setFilters] = useState({ modelId: '', minBattery: '' });
   const [vehicles, setVehicles] = useState([]);
@@ -251,9 +199,12 @@ const VehicleSearchPage = () => {
                       <article key={vehicle.vehicleId} className="vehicle-search-card">
                         <div className="vehicle-search-card__image">
                           <img
-                            src={getModelImage(vehicle)}
+                            src={getVehicleImage(vehicle)}
                             alt={vehicle.model?.modelName || 'EVR Vehicle'}
                             loading="lazy"
+                            onError={(e) => {
+                              e.target.src = '/images/models/default-vehicle.svg';
+                            }}
                           />
                         </div>
 
