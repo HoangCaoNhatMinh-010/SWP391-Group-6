@@ -57,12 +57,13 @@ const CreateMaintenancePage = () => {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const data = await vehicleService.getVehicles();
-        setVehicles(data);
+        const response = await vehicleService.getVehicles();
+        const vehicleList = response.vehicles || [];
+        setVehicles(vehicleList);
 
         // If vehicleId is provided, find and set the selected vehicle
         if (vehicleIdParam) {
-          const vehicle = data.find(v => v.vehicleId === Number(vehicleIdParam));
+          const vehicle = vehicleList.find(v => v.vehicleId === Number(vehicleIdParam));
           if (vehicle) {
             setSelectedVehicle(vehicle);
           }
@@ -85,7 +86,10 @@ const CreateMaintenancePage = () => {
 
     // Update selected vehicle when vehicleId changes
     if (name === 'vehicleId') {
-      const vehicle = vehicles.find(v => v.vehicleId === Number(value));
+      // Thêm kiểm tra Array.isArray để an toàn tuyệt đối
+      const vehicle = Array.isArray(vehicles)
+        ? vehicles.find(v => v.vehicleId === Number(value))
+        : null;
       setSelectedVehicle(vehicle || null);
     }
   };
@@ -152,7 +156,7 @@ const CreateMaintenancePage = () => {
                   name="vehicleId"
                   value={formData.vehicleId}
                   onChange={handleChange}
-                  options={vehicles.map((vehicle) => ({
+                  options={(Array.isArray(vehicles) ? vehicles : []).map((vehicle) => ({
                     value: vehicle.vehicleId,
                     label: `${vehicle.model?.modelName || vehicle.model?.name || 'Mẫu xe'} – ${vehicle.plateNumber} (Pin: ${vehicle.batteryLevel || 0}%)`,
                   }))}

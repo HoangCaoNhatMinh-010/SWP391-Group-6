@@ -27,7 +27,8 @@ public class Vehicle {
     private BigDecimal mileage;
     @Convert(converter = VehicleStatusConverter.class)
     private VehicleStatus status = VehicleStatus.AVAILABLE;
-    
     private Date lastMaintenanceDate;
+    @Column(name = "image_url")
+    private String imageUrl;
 }
 

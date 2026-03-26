@@ -14,65 +14,14 @@ import SuccessMessage from '@components/common/SuccessMessage';
 import './CreateBookingPage.css';
 
 //const PRICE_PER_DAY = 250000; 
-
-const normalizeModelImage = (rawPath) => {
-  if (!rawPath) {
-    return null;
+const getVehicleImage = (vehicle) => {
+  if (!vehicle?.imageUrl) {
+    return '/images/vehicles/default.jpg';
   }
 
-  let normalized = rawPath.trim();
-  if (!normalized) {
-    return null;
-  }
-
-  if (/^data:image\//.test(normalized)) {
-    return normalized;
-  }
-
-  normalized = normalized.replace(/\\/g, '/');
-
-  if (normalized.startsWith('/public/')) {
-    normalized = normalized.replace('/public', '');
-  } else if (normalized.startsWith('public/')) {
-    normalized = normalized.replace('public', '');
-  }
-
-  if (!normalized.startsWith('/')) {
-    normalized = `/${normalized}`;
-  }
-
-  if (!/\.[a-z]{2,4}$/i.test(normalized)) {
-    normalized = `${normalized}.jpg`;
-  }
-
-  return normalized;
+  // đảm bảo có dấu /
+  return '/' + vehicle.imageUrl;
 };
-
-const fallbackModelImage = (vehicle) => {
-  const modelCode =
-    vehicle?.model?.modelName ||
-    vehicle?.model?.vehicleType ||
-    vehicle?.model?.brand ||
-    '';
-
-  const normalized = modelCode.toLowerCase().replace(/\s+/g, '');
-
-  if (normalized.includes('urban') || normalized.includes('compact')) {
-    return '/images/models/urban-compact.svg';
-  }
-  if (normalized.includes('executive') || normalized.includes('sedan')) {
-    return '/images/models/executive-sedan.svg';
-  }
-  if (normalized.includes('adventure') || normalized.includes('suv')) {
-    return '/images/models/adventure-suv.svg';
-  }
-
-  return '/images/models/default-vehicle.svg';
-};
-
-const getModelImage = (vehicle) =>
-  normalizeModelImage(vehicle?.model?.imageUrl) || fallbackModelImage(vehicle);
-
 const BOOKING_STEPS = [
   { title: 'Chọn trạm', description: 'Điểm nhận/trả xe thuận tiện nhất cho bạn.' },
   { title: 'Chọn xe', description: 'Lựa chọn mẫu xe phù hợp nhu cầu di chuyển.' },
@@ -389,8 +338,11 @@ const CreateBookingPage = () => {
                       <div className="booking-create__vehicle-preview">
                         <div className="booking-create__vehicle-image">
                           <img
-                            src={getModelImage(selectedVehicle)}
-                            alt={selectedVehicle.model?.modelName || selectedVehicle.model?.name || 'EVR Vehicle'}
+                            src={`/${selectedVehicle?.imageUrl}`}
+                            alt="vehicle"
+                            onError={(e) => {
+                              e.target.src = '/images/vehicles/default.jpg';
+                            }}
                           />
                         </div>
                         <div className="booking-create__vehicle-header">

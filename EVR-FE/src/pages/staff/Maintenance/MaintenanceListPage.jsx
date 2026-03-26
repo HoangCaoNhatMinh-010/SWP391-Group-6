@@ -239,10 +239,6 @@ const MaintenanceListPage = () => {
                   )}
 
                   <div className="maintenance-list__card-content">
-                    <div className="maintenance-list__info-item">
-                      <span>Vấn đề</span>
-                      <p>{maintenance.issue || 'N/A'}</p>
-                    </div>
                     {maintenance.scheduledAt && (
                       <div className="maintenance-list__info-item">
                         <span>Lịch dự kiến</span>

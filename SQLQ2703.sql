@@ -42,40 +42,40 @@ VALUES
 (13, N'357 Võ Thị Sáu, Quận 3, TP.HCM', '2024-01-15 10:00:00', '1993-03-25', 'buivannam@email.com', 'buivannam_license.jpg', N'Bùi Văn Nam', '$2a$12$yJ8LYmndRx7gLsEJk1epj.ssi/z5aANNF6NMzsXU5YEs181lxXMqy', 'buivannam_id.jpg', '0923334455', 'Customer', 'Suspended', NULL);
 
 SET IDENTITY_INSERT Users OFF;
-INSERT INTO Vehicle (ModelID, StationID, plateNumber, batteryLevel, mileage, status, lastMaintenanceDate)
+INSERT INTO Vehicle (ModelID, StationID, plateNumber, batteryLevel, mileage, status, lastMaintenanceDate, image_url)
 VALUES
 
 -- ================= STATION 1 =================
-(1, 1, '51A-12345', 90, 1200, 'AVAILABLE', '2025-01-05'),
-(2, 1, '51B-67890', 85, 800, 'AVAILABLE', '2025-01-10'),
-(3, 1, '51C-11111', 70, 2500, 'AVAILABLE', '2024-12-20'),
-(4, 1, '51D-22222', 95, 500, 'AVAILABLE', '2025-02-01'),
-(5, 1, '51E-33333', 88, 1500, 'AVAILABLE', '2025-01-25'),
-(6, 1, '51F-44444', 80, 3000, 'MAINTENANCE', '2025-02-05'),
+(1, 1, '51A-12345', 90, 1200, 'AVAILABLE', '2025-01-05', 'images/vehicles/51A-12345.jpg'),
+(2, 1, '51B-67890', 85, 800, 'AVAILABLE', '2025-01-10', 'images/vehicles/51B-67890.jpg'),
+(3, 1, '51C-11111', 70, 2500, 'AVAILABLE', '2024-12-20', 'images/vehicles/51C-11111.jpg'),
+(4, 1, '51D-22222', 95, 500, 'AVAILABLE', '2025-02-01', 'images/vehicles/51D-22222.jpg'),
+(5, 1, '51E-33333', 88, 1500, 'AVAILABLE', '2025-01-25', 'images/vehicles/51E-33333.jpg'),
+(6, 1, '51F-44444', 80, 3000, 'MAINTENANCE', '2025-02-05', 'images/vehicles/51F-44444.jpg'),
 
 -- ================= STATION 2 =================
-(1, 2, '51G-55555', 92, 1000, 'AVAILABLE', '2025-01-15'),
-(2, 2, '51H-66666', 100, 300, 'AVAILABLE', '2025-02-08'),
-(3, 2, '51K-77777', 78, 1800, 'AVAILABLE', '2025-01-20'),
-(4, 2, '51L-88888', 85, 1200, 'AVAILABLE', '2025-01-28'),
-(5, 2, '51M-99999', 90, 2000, 'AVAILABLE', '2025-01-30'),
-(6, 2, '51N-10101', 75, 3500, 'AVAILABLE', '2025-01-22'),
+(1, 2, '51G-55555', 92, 1000, 'AVAILABLE', '2025-01-15', 'images/vehicles/51G-55555.jpg'),
+(2, 2, '51H-66666', 100, 300, 'AVAILABLE', '2025-02-08', 'images/vehicles/51H-66666.jpg'),
+(3, 2, '51K-77777', 78, 1800, 'AVAILABLE', '2025-01-20', 'images/vehicles/51K-77777.jpg'),
+(4, 2, '51L-88888', 85, 1200, 'AVAILABLE', '2025-01-28', 'images/vehicles/51L-88888.jpg'),
+(5, 2, '51M-99999', 90, 2000, 'AVAILABLE', '2025-01-30', 'images/vehicles/51M-99999.jpg'),
+(6, 2, '51N-10101', 75, 3500, 'AVAILABLE', '2025-01-22', 'images/vehicles/51N-10101.jpg'),
 
 -- ================= STATION 3 =================
-(1, 3, '51P-12121', 88, 900, 'AVAILABLE', '2025-02-03'),
-(2, 3, '51S-13131', 95, 800, 'AVAILABLE', '2025-02-03'),
-(3, 3, '51T-14141', 60, 3000, 'MAINTENANCE', '2025-02-05'),
-(4, 3, '52A-15151', 89, 1400, 'AVAILABLE', '2025-02-10'),
-(5, 3, '52B-16161', 92, 1100, 'AVAILABLE', '2025-02-12'),
-(6, 3, '52C-17171', 78, 2800, 'AVAILABLE', '2025-02-01'),
+(1, 3, '51P-12121', 88, 900, 'AVAILABLE', '2025-02-03', 'images/vehicles/51P-12121.jpg'),
+(2, 3, '51S-13131', 95, 800, 'AVAILABLE', '2025-02-03', 'images/vehicles/51S-13131.jpg'),
+(3, 3, '51T-14141', 60, 3000, 'MAINTENANCE', '2025-02-05', 'images/vehicles/51T-14141.jpg'),
+(4, 3, '52A-15151', 89, 1400, 'AVAILABLE', '2025-02-10', 'images/vehicles/52A-15151.jpg'),
+(5, 3, '52B-16161', 92, 1100, 'AVAILABLE', '2025-02-12', 'images/vehicles/52B-16161.jpg'),
+(6, 3, '52C-17171', 78, 2800, 'AVAILABLE', '2025-02-01', 'images/vehicles/52C-17171.jpg'),
 
 -- ================= STATION 4 =================
-(1, 4, '52D-18181', 85, 1500, 'AVAILABLE', '2025-02-18'),
-(2, 4, '52E-19191', 87, 1200, 'AVAILABLE', '2025-02-18'),
-(3, 4, '52F-20202', 80, 2200, 'AVAILABLE', '2025-02-11'),
-(4, 4, '52G-21212', 95, 400, 'AVAILABLE', '2025-02-20'),
-(5, 4, '52H-22222', 89, 1600, 'AVAILABLE', '2025-02-23'),
-(6, 4, '52K-23232', 70, 4000, 'AVAILABLE', '2025-01-30');
+(1, 4, '52D-18181', 85, 1500, 'AVAILABLE', '2025-02-18', 'images/vehicles/52D-18181.jpg'),
+(2, 4, '52E-19191', 87, 1200, 'AVAILABLE', '2025-02-18', 'images/vehicles/52E-19191.jpg'),
+(3, 4, '52F-20202', 80, 2200, 'AVAILABLE', '2025-02-11', 'images/vehicles/52F-20202.jpg'),
+(4, 4, '52G-21212', 95, 400, 'AVAILABLE', '2025-02-20', 'images/vehicles/52G-21212.jpg'),
+(5, 4, '52H-22222', 89, 1600, 'AVAILABLE', '2025-02-23', 'images/vehicles/52H-22222.jpg'),
+(6, 4, '52K-23232', 70, 4000, 'AVAILABLE', '2025-01-30', 'images/vehicles/52K-23232.jpg');
 INSERT INTO Booking (UserID, VehicleID, StationID, StaffID, startTime, endTime, totalPrice, BookingStatus)
 VALUES
   (8, 1, 1, 2, '2025-01-15 08:00:00', '2025-01-17 18:00:00', 2700000, 'COMPLETED'),
@@ -162,5 +162,4 @@ VALUES
 
 UPDATE Users
 SET EmailVerified = 1;
-
 
