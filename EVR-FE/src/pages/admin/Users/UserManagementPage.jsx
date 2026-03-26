@@ -13,12 +13,6 @@ const STATUS_TONE = {
   DELETED: 'neutral',
 };
 
-const renderStatusBadge = (status) => {
-  const normalized = (status || '').toUpperCase();
-  const tone = STATUS_TONE[normalized] || 'neutral';
-  return <span className={`admin-user__status admin-user__status--${tone}`}>{status || '—'}</span>;
-};
-
 const UserManagementPage = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);

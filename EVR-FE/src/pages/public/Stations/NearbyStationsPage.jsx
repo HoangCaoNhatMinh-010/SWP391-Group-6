@@ -50,7 +50,7 @@ const NearbyStationsPage = () => {
           });
           setLoading(false);
         },
-        (err) => {
+        () => {
           setError('Không thể lấy vị trí hiện tại. Vui lòng nhập thủ công.');
           setLoading(false);
         }

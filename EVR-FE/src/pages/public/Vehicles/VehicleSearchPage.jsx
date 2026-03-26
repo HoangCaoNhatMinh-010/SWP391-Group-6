@@ -58,6 +58,7 @@ const VehicleSearchPage = () => {
     setHasSearched(false);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const fleetMetrics = useMemo(() => {
     if (!vehicles.length) {
       return { total: 0, avgBattery: 0, available: 0 };
@@ -78,8 +79,6 @@ const VehicleSearchPage = () => {
     );
   }, [vehicles]);
 
-  const averageBattery =
-    fleetMetrics.total > 0 ? Math.round(fleetMetrics.avgBattery / fleetMetrics.total) : 0;
 
   return (
     <MainLayout>

@@ -18,7 +18,7 @@ const getVehicleImage = (vehicle) => {
     return `/images/vehicles/${vehicle.plateNumber}.jpg`;
   }
 
-  return '/images/models/default-vehicle.svg';
+  return '../images/models/default-vehicle.svg';
 };
 const VehicleDetailsPage = () => {
   const { id } = useParams();

@@ -121,15 +121,15 @@ const LandingPage = () => {
     const fallbackImageByName = (modelName = '') => {
       const normalized = modelName.toLowerCase().replace(/\s+/g, '');
       if (normalized.includes('urban') || normalized.includes('compact')) {
-        return '/images/models/urban-compact.svg';
+        return '../images/vehicles/urban-compact.svg';
       }
       if (normalized.includes('executive') || normalized.includes('sedan')) {
-        return '/images/models/executive-sedan.svg';
+        return '../images/vehicles/executive-sedan.svg';
       }
       if (normalized.includes('adventure') || normalized.includes('suv')) {
-        return '/images/models/adventure-suv.svg';
+        return '../images/vehicles/adventure-suv.svg';
       }
-      return '/images/models/default-vehicle.svg';
+      return '../images/models/default-vehicle.svg';      
     };
 
     const formatPrice = (basePrice) => {
