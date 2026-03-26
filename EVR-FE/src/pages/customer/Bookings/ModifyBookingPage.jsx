@@ -10,66 +10,14 @@ import SuccessMessage from '@components/common/SuccessMessage';
 
 import './ModifyBookingPage.css';
 
-const PRICE_PER_DAY = 250000;
+// const PRICE_PER_DAY = 250000;
 
-const normalizeModelImage = (rawPath) => {
-  if (!rawPath) {
-    return null;
+const getVehicleImage = (vehicle) => {
+  if (vehicle?.plateNumber) {
+    return `/images/vehicles/${vehicle.plateNumber}.jpg`;
   }
-
-  let normalized = rawPath.trim();
-  if (!normalized) {
-    return null;
-  }
-
-  if (/^data:image\//.test(normalized)) {
-    return normalized;
-  }
-
-  normalized = normalized.replace(/\\/g, '/');
-
-  if (normalized.startsWith('/public/')) {
-    normalized = normalized.replace('/public', '');
-  } else if (normalized.startsWith('public/')) {
-    normalized = normalized.replace('public', '');
-  }
-
-  if (!normalized.startsWith('/')) {
-    normalized = `/${normalized}`;
-  }
-
-  if (!/\.[a-z]{2,4}$/i.test(normalized)) {
-    normalized = `${normalized}.jpg`;
-  }
-
-  return normalized;
-};
-
-const fallbackModelImage = (vehicle) => {
-  const modelCode =
-    vehicle?.model?.modelName ||
-    vehicle?.model?.vehicleType ||
-    vehicle?.model?.brand ||
-    '';
-
-  const normalized = modelCode.toLowerCase().replace(/\s+/g, '');
-
-  if (normalized.includes('urban') || normalized.includes('compact')) {
-    return '/images/models/urban-compact.svg';
-  }
-  if (normalized.includes('executive') || normalized.includes('sedan')) {
-    return '/images/models/executive-sedan.svg';
-  }
-  if (normalized.includes('adventure') || normalized.includes('suv')) {
-    return '/images/models/adventure-suv.svg';
-  }
-
   return '/images/models/default-vehicle.svg';
 };
-
-const getModelImage = (vehicle) =>
-  normalizeModelImage(vehicle?.model?.imageUrl) || fallbackModelImage(vehicle);
-
 const formatDate = (dateString) => {
   if (!dateString) return '—';
   const date = new Date(dateString);
@@ -116,7 +64,7 @@ const ModifyBookingPage = () => {
   }, [id]);
 
   const rentalSummary = useMemo(() => {
-    if (!booking?.startTime || !formData.endTime) {
+    if (!booking?.startTime || !formData.endTime || !booking?.vehicle) {
       return { duration: 0, total: 0 };
     }
     const start = new Date(booking.startTime);
@@ -126,9 +74,13 @@ const ModifyBookingPage = () => {
     }
     const milliseconds = end.getTime() - start.getTime();
     const duration = Math.ceil(milliseconds / (1000 * 60 * 60 * 24));
-    const total = duration * PRICE_PER_DAY;
-    return { duration, total };
-  }, [booking?.startTime, formData.endTime]);
+
+    // Lấy giá động từ model xe của booking hiện tại
+    const pricePerDay = booking.vehicle.model?.basePrice || 0;
+    const total = duration * pricePerDay;
+
+    return { duration, total, pricePerDay }; // Trả về thêm pricePerDay để dùng ở UI phía dưới
+  }, [booking, formData.endTime]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -188,8 +140,7 @@ const ModifyBookingPage = () => {
     );
   }
 
-  const vehicleImage = getModelImage(booking.vehicle);
-
+  const vehicleImage = getVehicleImage(booking.vehicle);
   return (
     <CustomerLayout>
       <div className="modify-booking">
@@ -277,7 +228,7 @@ const ModifyBookingPage = () => {
                   <FormInput
                     label="Thời gian trả xe mới"
                     name="endTime"
-                    type="datetime-local"
+                    type="date"
                     value={formData.endTime}
                     onChange={handleChange}
                     required
@@ -320,7 +271,9 @@ const ModifyBookingPage = () => {
               <div className="modify-booking__summary-price">
                 <strong>{rentalSummary.total.toLocaleString('vi-VN')} ₫</strong>
                 {rentalSummary.duration > 0 && (
-                  <span>{rentalSummary.duration} ngày x {PRICE_PER_DAY.toLocaleString('vi-VN')} ₫</span>
+                  <span>{rentalSummary.duration > 0 && (
+                    <span>{rentalSummary.duration} ngày x {(rentalSummary.pricePerDay || 0).toLocaleString('vi-VN')} ₫</span>
+                  )}</span>
                 )}
               </div>
               {rentalSummary.duration === 0 && (
