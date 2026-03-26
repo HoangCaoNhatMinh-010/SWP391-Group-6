@@ -68,8 +68,8 @@ const RegisterPage = () => {
 
     try {
       await authService.register(formData, personalIdImage, licenseImage);
-      navigate('/register/success', { 
-        state: { email: formData.email } 
+      navigate('/register/success', {
+        state: { email: formData.email }
       });
     } catch (err) {
       setError(err.response?.data?.message || 'Đăng ký thất bại. Vui lòng thử lại.');
@@ -221,7 +221,6 @@ const RegisterPage = () => {
                   helperText="Định dạng JPG hoặc PNG, dung lượng tối đa 5 MB."
                   maxSize={5 * 1024 * 1024}
                   allowedTypes={['image/jpeg', 'image/png', 'image/jpg']}
-                  required
                 />
                 <FormFileUpload
                   label="Bằng lái xe"
@@ -231,7 +230,6 @@ const RegisterPage = () => {
                   helperText="Định dạng JPG hoặc PNG, dung lượng tối đa 5 MB."
                   maxSize={5 * 1024 * 1024}
                   allowedTypes={['image/jpeg', 'image/png', 'image/jpg']}
-                  required
                 />
               </div>
 

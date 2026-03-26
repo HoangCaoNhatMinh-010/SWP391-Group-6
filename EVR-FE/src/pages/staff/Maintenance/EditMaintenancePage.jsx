@@ -10,30 +10,13 @@ import SuccessMessage from '@components/common/SuccessMessage';
 
 import './EditMaintenancePage.css';
 
-const normalizeModelImage = (rawPath) => {
-  if (!rawPath) return null;
-  let normalized = rawPath.trim();
-  if (!normalized) return null;
-  if (/^data:image\//.test(normalized)) return normalized;
-  normalized = normalized.replace(/\\/g, '/');
-  if (normalized.startsWith('/public/')) normalized = normalized.replace('/public', '');
-  else if (normalized.startsWith('public/')) normalized = normalized.replace('public', '');
-  if (!normalized.startsWith('/')) normalized = `/${normalized}`;
-  if (!/\.[a-z]{2,4}$/i.test(normalized)) normalized = `${normalized}.jpg`;
-  return normalized;
-};
+const getVehicleImage = (vehicle) => {
+  if (vehicle?.plateNumber) {
+    return `/images/vehicles/${vehicle.plateNumber}.jpg`;
+  }
 
-const fallbackModelImage = (vehicle) => {
-  const modelCode = vehicle?.model?.modelName || vehicle?.model?.vehicleType || vehicle?.model?.brand || '';
-  const normalized = modelCode.toLowerCase().replace(/\s+/g, '');
-  if (normalized.includes('urban') || normalized.includes('compact')) return '/images/models/urban-compact.svg';
-  if (normalized.includes('executive') || normalized.includes('sedan')) return '/images/models/executive-sedan.svg';
-  if (normalized.includes('adventure') || normalized.includes('suv')) return '/images/models/adventure-suv.svg';
   return '/images/models/default-vehicle.svg';
 };
-
-const getModelImage = (vehicle) => normalizeModelImage(vehicle?.model?.imageUrl) || fallbackModelImage(vehicle);
-
 const formatDate = (dateString) => {
   if (!dateString) return '—';
   const date = new Date(dateString);
@@ -159,8 +142,7 @@ const EditMaintenancePage = () => {
   }
 
   const statusInfo = getStatusInfo(maintenance.status);
-  const vehicleImage = maintenance.vehicle ? getModelImage(maintenance.vehicle) : null;
-
+  const vehicleImage = maintenance.vehicle ? getVehicleImage(maintenance.vehicle) : null;
   return (
     <StaffLayout>
       <div className="edit-maintenance">
@@ -212,7 +194,13 @@ const EditMaintenancePage = () => {
                 <div className="edit-maintenance__vehicle-card">
                   {vehicleImage && (
                     <div className="edit-maintenance__vehicle-image">
-                      <img src={vehicleImage} alt={maintenance.vehicle.model?.modelName || 'EVR Vehicle'} />
+                      <img
+                        src={vehicleImage}
+                        alt={maintenance.vehicle.model?.modelName || 'EVR Vehicle'}
+                        onError={(e) => {
+                          e.target.src = '/images/models/default-vehicle.svg';
+                        }}
+                      />
                     </div>
                   )}
                   <div className="edit-maintenance__vehicle-info">
